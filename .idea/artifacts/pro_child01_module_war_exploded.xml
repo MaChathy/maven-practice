@@ -14,6 +14,9 @@
           <element id="module-output" name="pro-child01-module" />
         </element>
         <element id="directory" name="lib">
+          <element id="library" level="project" name="Maven: org.mybatis:mybatis:3.5.13" />
+          <element id="library" level="project" name="Maven: mysql:mysql-connector-java:8.0.27" />
+          <element id="library" level="project" name="Maven: com.google.protobuf:protobuf-java:3.11.4" />
           <element id="library" level="project" name="Maven: ch.qos.logback:logback-classic:1.2.3" />
           <element id="library" level="project" name="Maven: ch.qos.logback:logback-core:1.2.3" />
           <element id="library" level="project" name="Maven: org.slf4j:slf4j-api:1.7.25" />

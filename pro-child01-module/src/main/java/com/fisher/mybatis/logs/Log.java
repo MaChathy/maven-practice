@@ -1,4 +1,4 @@
-package com.fisher.mybatis;
+package com.fisher.mybatis.logs;
 
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;

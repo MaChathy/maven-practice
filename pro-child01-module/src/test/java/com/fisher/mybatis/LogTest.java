@@ -6,7 +6,6 @@ import org.slf4j.LoggerFactory;
 
 import java.time.LocalDate;
 
-import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * 使用日志测试

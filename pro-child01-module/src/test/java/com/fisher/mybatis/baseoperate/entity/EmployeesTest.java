@@ -1,24 +1,23 @@
 package com.fisher.mybatis.baseoperate.entity;
 
+import lombok.extern.slf4j.Slf4j;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import org.junit.Test;
-import org.slf4j.LoggerFactory;
 
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.logging.Logger;
 
-import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * Mybatis 的基本操作-单个查询测试
  * @author fisher
  * @version 1.0.1 2023/6/1 - 22:24
  */
+@Slf4j
 public class EmployeesTest {
 
     @Test
@@ -42,10 +41,9 @@ public class EmployeesTest {
         //执行SQL语句
         Employees empResult = (Employees)session.selectOne(statement, empId);
         //Logger.getLogger(this.getClass().getName()).info(empResult.toString());
-        LoggerFactory.getLogger(this.getClass().getName()).info("empResult = " + empResult);
+        log.info(empResult.toString());
         //关闭输入流
         inputStream.close();
 
     }
-
 }

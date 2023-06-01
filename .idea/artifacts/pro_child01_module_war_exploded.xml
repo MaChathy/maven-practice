@@ -13,6 +13,11 @@
         <element id="directory" name="classes">
           <element id="module-output" name="pro-child01-module" />
         </element>
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="Maven: ch.qos.logback:logback-classic:1.2.3" />
+          <element id="library" level="project" name="Maven: ch.qos.logback:logback-core:1.2.3" />
+          <element id="library" level="project" name="Maven: org.slf4j:slf4j-api:1.7.25" />
+        </element>
       </element>
       <element id="directory" name="META-INF">
         <element id="file-copy" path="$PROJECT_DIR$/pro-child01-module/target/pro-child01-module-1.0-SNAPSHOT/META-INF/MANIFEST.MF" />

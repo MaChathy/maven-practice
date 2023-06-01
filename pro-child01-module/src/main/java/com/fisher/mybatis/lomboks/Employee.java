@@ -3,6 +3,7 @@ package com.fisher.mybatis.lomboks;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 import lombok.extern.slf4j.Slf4j;
 
 /**
@@ -10,10 +11,12 @@ import lombok.extern.slf4j.Slf4j;
  * @author fisher
  * @version 1.0.1 2023/6/1 - 19:48
  */
+//@ToString //生成toString()方法
+//@Slf4j //生成日志对象
+
 @Data //生成getter和setter方法
 @NoArgsConstructor //生成无参构造器
 @AllArgsConstructor //生成全参构造器
-@Slf4j //
 public class Employee {
 
     //员工id
@@ -24,3 +27,4 @@ public class Employee {
     private Double empSalary;
 
 }
+

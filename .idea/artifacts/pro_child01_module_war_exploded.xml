@@ -17,6 +17,13 @@
           <element id="library" level="project" name="Maven: ch.qos.logback:logback-classic:1.2.3" />
           <element id="library" level="project" name="Maven: ch.qos.logback:logback-core:1.2.3" />
           <element id="library" level="project" name="Maven: org.slf4j:slf4j-api:1.7.25" />
+          <element id="library" level="project" name="Maven: org.testng:testng:7.8.0" />
+          <element id="library" level="project" name="Maven: com.beust:jcommander:1.82" />
+          <element id="library" level="project" name="Maven: org.webjars:jquery:3.6.1" />
+          <element id="library" level="project" name="Maven: org.junit.jupiter:junit-jupiter-api:5.10.0-M1" />
+          <element id="library" level="project" name="Maven: org.opentest4j:opentest4j:1.2.0" />
+          <element id="library" level="project" name="Maven: org.junit.platform:junit-platform-commons:1.10.0-M1" />
+          <element id="library" level="project" name="Maven: org.apiguardian:apiguardian-api:1.1.2" />
         </element>
       </element>
       <element id="directory" name="META-INF">

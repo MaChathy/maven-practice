@@ -7,7 +7,7 @@
 <mapper namespace="com.fisher.mybatis.dao.EmployeeMapper">
     <!-- 编写具体的SQL语句，使用id属性唯一的标记一条SQL语句 -->
     <!-- resultType属性：指定封装查询结果的Java实体类的全类名 -->
-    <select id="selectEmployee" resultType="com.fisher.mybatis.baseoperate.entity.Employee">
+    <select id="selectEmployee" resultType="com.fisher.mybatis.baseoperate.entity.Employees">
         <!-- Mybatis负责把SQL语句中的#{}部分替换成“?”占位符，在#{}内部还是要声明一个见名知意的名称 -->
         select emp_id empId,emp_name empName,emp_salary empSalary from t_emp where emp_id=#{emp_id}
     </select>

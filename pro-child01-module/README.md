@@ -20,7 +20,22 @@ mybatis 基本操作01
 
 1. 导入依赖
 
-2. 尊卑配置文件
+2. 准备配置文件 
+   
+    ①mybatis全局核心配置文件mybatis-config.xml
+    
+    ②mybatis映射配置文件
+
+    ORM(Object Relationship Mapping) 对象关系映射
+    
+    Object:Java实体类对象
+
+    Relationship:关系型数据库
+
+    Mapping:二者之间的对应关系
+    
+    ![img_1.png](img_1.png)
+    
 
 4.Junit测试
 

@@ -17,4 +17,14 @@ import com.fisher.mybatis.baseoperate.entity.Employees;
 public interface EmployeeMapper {
     //查询单个员工
     Employees selectEmployee(Integer empId);
+
+    //插入员工信息
+    int insertEmployee(Employees employee);
+
+    //修改员工信息
+    int updateEmployee(Employees employee);
+
+    //删除员工信息
+    int deleteEmployee(Employees employee);
+
 }

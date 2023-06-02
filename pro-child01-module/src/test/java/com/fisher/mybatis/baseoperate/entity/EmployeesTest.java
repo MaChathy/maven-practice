@@ -4,7 +4,6 @@ import com.fisher.mybatis.dao.EmployeeMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
-import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import org.junit.After;
 import org.junit.Before;
@@ -12,15 +11,17 @@ import org.junit.Test;
 
 
 import java.io.IOException;
-import java.io.InputStream;
 
 
 /**
- * Mybatis 的基本操作-单个查询测试
+ * Mybatis 的基本操作-curd(增删改查)
+ *
  * v1.1.1优化测试
  * v1.2.1测试Mapper接口
+ * v1.3.1新增测试：增、删、改
+ *
  * @author fisher
- * @version 1.1.1 2023/6/1 - 22:24
+ * @version 1.3.1 2023/6/1 - 22:24
  */
 @Slf4j
 public class EmployeesTest {
@@ -77,9 +78,22 @@ public class EmployeesTest {
 
     @Test
     public void testInsertEmployee(){
-
+        EmployeeMapper employeeMapper = this.sqlSession.getMapper(EmployeeMapper.class);
+        int res = employeeMapper.insertEmployee(new Employees(null,"李冲",1000.11));
+        log.info("rows = "+ res);
     }
 
+    @Test
+    public void testUpdateEmployee(){
+        EmployeeMapper employeeMapper = this.sqlSession.getMapper(EmployeeMapper.class);
+        int updateEmployee = employeeMapper.updateEmployee(new Employees(4, "李冲", 1000.11));
+        log.info("rows = "+ updateEmployee);
+    }
 
-
+    @Test
+    public void testDeleteEmployee(){
+        EmployeeMapper employeeMapper = this.sqlSession.getMapper(EmployeeMapper.class);
+        int res = employeeMapper.deleteEmployee(new Employees(4,null,null));
+        log.info("rows = "+res);
+    }
 }

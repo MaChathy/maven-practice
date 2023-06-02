@@ -22,6 +22,7 @@ import java.util.Map;
  * v1.2.1测试Mapper接口
  * v1.3.1新增测试：增、删、改
  * v1.4.1新增Mybatis SQL多种数据输入测试
+ * v1.5.1获取自增主键,在插入数据时，将自增主键的值赋给新建插入对象
  *
  * @author fisher
  * @version 1.4.1 2023/6/1 - 22:24
@@ -82,8 +83,13 @@ public class EmployeesTest {
     @Test
     public void testInsertEmployee(){
         EmployeeMapper employeeMapper = this.sqlSession.getMapper(EmployeeMapper.class);
-        int res = employeeMapper.insertEmployee(new Employees(null,"李冲",1000.11));
-        log.info("rows = "+ res);
+
+        Employees newEmp = new Employees();
+        newEmp.setEmpName("Origin");
+        newEmp.setEmpSalary(99999.9);
+        employeeMapper.insertEmployee(newEmp);
+
+        log.info("newEmp id = " + newEmp.getEmpId());
     }
 
     @Test

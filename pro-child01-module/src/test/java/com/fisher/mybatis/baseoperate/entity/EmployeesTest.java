@@ -11,6 +11,8 @@ import org.junit.Test;
 
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 
 /**
@@ -19,9 +21,10 @@ import java.io.IOException;
  * v1.1.1优化测试
  * v1.2.1测试Mapper接口
  * v1.3.1新增测试：增、删、改
+ * v1.4.1新增Mybatis SQL多种方式传参测试
  *
  * @author fisher
- * @version 1.3.1 2023/6/1 - 22:24
+ * @version 1.4.1 2023/6/1 - 22:24
  */
 @Slf4j
 public class EmployeesTest {
@@ -95,5 +98,22 @@ public class EmployeesTest {
         EmployeeMapper employeeMapper = this.sqlSession.getMapper(EmployeeMapper.class);
         int res = employeeMapper.deleteEmployee(new Employees(4,null,null));
         log.info("rows = "+res);
+    }
+
+    @Test
+    public void testUpdateEmployeeById(){
+        EmployeeMapper employeeMapper = this.sqlSession.getMapper(EmployeeMapper.class);
+        int row = employeeMapper.updateEmployeeById(4,1010.111);
+        log.info("rows = "+row);
+    }
+
+    @Test
+    public void testUpdateEmployeeByMap(){
+        EmployeeMapper employeeMapper = this.sqlSession.getMapper(EmployeeMapper.class);
+        Map<String,Object> paramMap = new HashMap<>();
+        paramMap.put("empIdKey",4);
+        paramMap.put("empSalaryKey",100.11);
+        int row = employeeMapper.updateEmployeeByMap(paramMap);
+        log.info("row = "+row);
     }
 }

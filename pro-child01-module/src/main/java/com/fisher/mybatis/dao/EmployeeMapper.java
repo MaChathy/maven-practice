@@ -1,6 +1,9 @@
 package com.fisher.mybatis.dao;
 
 import com.fisher.mybatis.baseoperate.entity.Employees;
+import org.apache.ibatis.annotations.Param;
+
+import java.util.Map;
 
 /**
  * 声明Mapper接口,与EmployeeMapper.xml文件相对应
@@ -24,7 +27,16 @@ public interface EmployeeMapper {
     //修改员工信息
     int updateEmployee(Employees employee);
 
-    //删除员工信息
+    //删除员工信
     int deleteEmployee(Employees employee);
+
+    //根据员工id删除员工信息
+    int deleteEmployeeById(Integer emoId);
+
+    //修改指定的员工信息
+    int updateEmployeeById(@Param("empId") Integer emoId,@Param("empSalary") Double empSalary);
+
+    //修改指定的员工信息
+    int updateEmployeeByMap(Map<String,Object> paramMap);
 
 }

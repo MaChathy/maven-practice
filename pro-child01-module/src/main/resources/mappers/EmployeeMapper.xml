@@ -19,7 +19,15 @@
     </insert>
     <!--修改员工信息-->
     <update id="updateEmployee">
-        update t_emp set emp_name=#{empName} where emp_id=#{empId}
+        update t_emp set emp_name=#{empName},emp_salary=#{empSalary} where emp_id=#{empId}
+    </update>
+    <!--修改指定员工信息-->
+    <update id="updateEmployeeById">
+        update t_emp set emp_salary=#{empSalary} where emp_id=#{empId}
+    </update>
+    <!--修改指定员工信息-->
+    <update id="updateEmployeeByMap">
+        update t_emp set emp_salary=#{empSalaryKey} where emp_id=#{empIdKey}
     </update>
     <!--删除员工信息-->
     <delete id="deleteEmployee">

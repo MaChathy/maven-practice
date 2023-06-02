@@ -11,4 +11,8 @@
         <!-- Mybatis负责把SQL语句中的#{}部分替换成“?”占位符，在#{}内部还是要声明一个见名知意的名称 -->
         select emp_id empId,emp_name empName,emp_salary empSalary from t_emp where emp_id=#{emp_id}
     </select>
+    <!--插入员工信息-->
+    <select id="insertEmployee" resultType="java.lang.Integer">
+        insert into t_emp(emp_name,emp_salary) values (#{emp_name},#{emp_salary})
+    </select>
 </mapper>

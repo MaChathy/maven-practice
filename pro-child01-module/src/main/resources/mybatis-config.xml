@@ -5,6 +5,9 @@
 <!--mybatis全局配置文件-->
 <configuration>
 
+    <!--指定外部jdbc文件-->
+    <properties resource="jdbc.properties"/>
+
     <!-- environments表示配置Mybatis的开发环境，可以配置多个环境，在众多具体环境中，使用default属性指定实际运行时使用的环境。default属性的取值是environment标签的id属性的值。 -->
     <environments default="development">
 
@@ -18,10 +21,10 @@
             <dataSource type="POOLED">
 
                 <!-- 建立数据库连接的具体信息 -->
-                <property name="driver" value="com.mysql.cj.jdbc.Driver"/>
-                <property name="url" value="jdbc:mysql://localhost:3306/mybatis_example"/>
-                <property name="username" value="root"/>
-                <property name="password" value="547547"/>
+                <property name="driver" value="${wechat.dev.driver}"/>
+                <property name="url" value="${wechat.dev.url}"/>
+                <property name="username" value="${wechat.dev.username}"/>
+                <property name="password" value="${wechat.dev.password}"/>
             </dataSource>
 
         </environment>

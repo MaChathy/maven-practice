@@ -9,10 +9,30 @@
     <!-- resultType属性：指定封装查询结果的Java实体类的全类名 -->
     <select id="selectEmployee" resultType="com.fisher.mybatis.baseoperate.entity.Employees">
         <!-- Mybatis负责把SQL语句中的#{}部分替换成“?”占位符，在#{}内部还是要声明一个见名知意的名称 -->
-        select emp_id empId,emp_name empName,emp_salary empSalary from t_emp where emp_id=#{empId}
+        select emp_id ,emp_name ,emp_salary from t_emp where emp_id=#{empId}
+    </select>
+    <!--查询员工总人数-->
+    <select id="selectEmployeeCount" resultType="int">
+        select count(*) from t_emp
+    </select>
+    <!--查询所有员工信息-->
+    <select id="selectEmployeeList" resultType="com.fisher.mybatis.baseoperate.entity.Employees">
+        select emp_id,emp_name,emp_salary from t_emp
+    </select>
+    <!--查询工资最高的员工姓名和工资-->
+    <select id="selectEmpNameAndMaxSalary" resultType="map">
+        select
+               emp_name 员工姓名,
+               emp_salary 员工工资,
+               (select avg(emp_salary) from t_emp) 平均工资
+        from t_emp
+        where emp_salary = (
+            select max(emp_salary) from t_emp
+            )
     </select>
     <!--插入员工信息-->
-    <insert id="insertEmployee" >
+    <!-- keyProperty属性可以指定主键在实体类对象中对应的属性名，Mybatis会将拿到的主键值存入这个属性 -->
+    <insert id="insertEmployee" useGeneratedKeys="true" keyProperty="empId">
         <!--当前场景：#{} 中必须是实体类对象的属性名-->
         <!-- 因为 Mybatis 需要根据 #{} 中提供的属性名到实体类中获取属性值 -->
         insert into t_emp(emp_name,emp_salary) values (#{empName},#{empSalary})

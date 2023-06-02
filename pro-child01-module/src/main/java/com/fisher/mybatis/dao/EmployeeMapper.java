@@ -3,6 +3,7 @@ package com.fisher.mybatis.dao;
 import com.fisher.mybatis.baseoperate.entity.Employees;
 import org.apache.ibatis.annotations.Param;
 
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -38,5 +39,17 @@ public interface EmployeeMapper {
 
     //修改指定的员工信息
     int updateEmployeeByMap(Map<String,Object> paramMap);
+
+    //获取员工人数
+    int selectEmployeeCount();
+
+    //获取所有员工信息表
+    List<Employees> selectEmployeeList();
+
+    //查询平均工资以及工资最高的员工姓名和工资
+    Map<String, Object> selectEmpNameAndMaxSalary();
+
+    //获取自增主键
+
 
 }

@@ -21,7 +21,7 @@ import java.util.Map;
  * v1.1.1优化测试
  * v1.2.1测试Mapper接口
  * v1.3.1新增测试：增、删、改
- * v1.4.1新增Mybatis SQL多种方式传参测试
+ * v1.4.1新增Mybatis SQL多种数据输入测试
  *
  * @author fisher
  * @version 1.4.1 2023/6/1 - 22:24

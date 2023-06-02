@@ -13,6 +13,8 @@ import java.io.IOException;
 
 /**
  * 对一关联测试
+ * OrderMapper.xml关键词：association、javaType
+ *
  * @author fisher
  * @version 1.0.1 2023/6/2 - 17:20
  */

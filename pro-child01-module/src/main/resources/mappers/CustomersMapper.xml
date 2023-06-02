@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC
+        "-//mybatis.org//DTD// Mapper 3.0 //EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.fisher.mybatis.dao.CustomerMapper">
+
+    <resultMap id="selectCustomerWithOrderMap" type="com.fisher.mybatis.baseoperate.entity.Customer">
+
+        <id column="customer_id" property="customerId"/>
+
+        <result column="customer_name" property="customerName"/>
+
+        <collection property="orderList" ofType="com.fisher.mybatis.baseoperate.entity.Order">
+
+            <id column="order_id" property="orderId"/>
+
+            <result column="order_name" property="orderName"/>
+
+        </collection>
+
+    </resultMap>
+
+    <select id="selectCustomerWithOrder" resultMap="selectCustomerWithOrderMap">
+        SELECT c.customer_id,c.customer_name,o.order_id,o.order_name
+        from t_customer c
+                 LEFT JOIN t_order o
+                           on c.customer_id = o.customer_id
+        where c.customer_id = #{customId}
+    </select>
+
+
+</mapper>

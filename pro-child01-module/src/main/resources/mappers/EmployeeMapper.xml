@@ -5,6 +5,25 @@
 <!--mapper是根标签，namespace属性：在MyBatis全局范围内找到一个具体的Mapper配置-->
 <!-- 引入接口后，为了方便通过接口全类名来找到Mapper配置文件，所以通常将namespace属性设置为接口全类名 -->
 <mapper namespace="com.fisher.mybatis.dao.EmployeeMapper">
+
+    <!--
+    |
+    |声明一个resultMap设定column到property之间的对应关系
+    |<resultMap id="selectEmployeeByRMResultMap" type="com.fisher.mybatis.baseoperate.entity.Employees">
+    |    使用id标签设置主键列和主键属性之间的对应关系
+    |    column属性用于指定字段名;property属性用于指定Java实体类属性名
+    |    <id column="emp_id" property="empId" />
+    |    使用result标签设置普通字段和java实体类之间的对应关系
+    |    <result column="emp_name" property="empName" />
+    |    <result column="emp_salary" property="empSalary" />
+    |</resultMap>
+    |
+    |<select id="selectEmployeeByRM" resultMap="selectEmployeeByRMResultMap">
+    |    select emp_id, emp_name, emp_salary from t_emp where emp_id=#{empId}
+    |</select>
+    |
+    -->
+
     <!-- 编写具体的SQL语句，使用id属性唯一的标记一条SQL语句 -->
     <!-- resultType属性：指定封装查询结果的Java实体类的全类名 -->
     <select id="selectEmployee" resultType="com.fisher.mybatis.baseoperate.entity.Employees">

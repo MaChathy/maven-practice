@@ -17,6 +17,8 @@
 
             <result column="order_name" property="orderName"/>
 
+            <result column="customer_id" property="customerId"/>
+
         </collection>
 
     </resultMap>

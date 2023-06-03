@@ -11,8 +11,6 @@ import org.junit.Test;
 
 import java.io.IOException;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 /**
  * “对多”测试
  * CustomerMapper.xml关键字：collocation、ofType

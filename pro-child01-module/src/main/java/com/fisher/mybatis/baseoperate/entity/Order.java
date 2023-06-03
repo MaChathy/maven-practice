@@ -19,6 +19,7 @@ public class Order {
     private String orderName;
     //客户id
     private Integer customerId;
+
     //订单客户（一个订单对应一个客户）
     private Customer customer;
 }

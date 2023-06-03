@@ -1,4 +1,4 @@
-package com.fisher.mybatis.dao;
+package com.fisher.mybatis.mapper;
 
 import com.fisher.mybatis.baseoperate.entity.Employees;
 import org.apache.ibatis.annotations.Param;

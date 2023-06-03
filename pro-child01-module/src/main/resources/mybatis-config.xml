@@ -13,6 +13,7 @@
         <!-- 规则要求数据库表字段命名方式：单词_单词 -->
         <!-- 规则要求Java实体类属性名命名方式：首字母小写的驼峰式命名 -->
         <setting name="mapUnderscoreToCamelCase" value="true"/>
+        <setting name="lazyLoadingEnabled" value="true"/>
     </settings>
     
     <!-- environments表示配置Mybatis的开发环境，可以配置多个环境，在众多具体环境中，使用default属性指定实际运行时使用的环境。default属性的取值是environment标签的id属性的值。 -->

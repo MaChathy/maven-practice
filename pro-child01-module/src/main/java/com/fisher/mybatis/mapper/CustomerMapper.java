@@ -1,4 +1,4 @@
-package com.fisher.mybatis.dao;
+package com.fisher.mybatis.mapper;
 
 import com.fisher.mybatis.baseoperate.entity.Customer;
 
@@ -10,6 +10,6 @@ import com.fisher.mybatis.baseoperate.entity.Customer;
 public interface CustomerMapper {
 
     //查询客户信息
-    Customer selectCustomerWithOrder(Integer customerId);
+    Customer selectCustomerWithOrderList(Integer customerId);
 
 }

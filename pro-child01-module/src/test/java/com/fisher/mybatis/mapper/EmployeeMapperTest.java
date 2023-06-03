@@ -1,23 +1,18 @@
-package com.fisher.mybatis.dao;
+package com.fisher.mybatis.mapper;
 
 import com.fisher.mybatis.baseoperate.entity.Employees;
-import com.fisher.mybatis.lomboks.Employee;
 import lombok.extern.slf4j.Slf4j;
 import lombok.var;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
-import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
 import java.io.IOException;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * MyBatis数据输出测试

@@ -3,6 +3,7 @@ package com.fisher.mybatis.baseoperate.entity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 /**
  * 订单实体类
@@ -12,6 +13,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@ToString(exclude = "customer")
 public class Order {
     //订单id
     private Integer orderId;

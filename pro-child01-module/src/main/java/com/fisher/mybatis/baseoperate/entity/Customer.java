@@ -3,6 +3,7 @@ package com.fisher.mybatis.baseoperate.entity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 import java.util.List;
 
@@ -14,6 +15,7 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+//@ToString(exclude = "orderList")
 public class Customer {
     //客户id
     private Integer customerId;

@@ -1,7 +1,8 @@
-package com.fisher.mybatis.dao;
+package com.fisher.mybatis.mapper;
 
 import com.fisher.mybatis.baseoperate.entity.Order;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;

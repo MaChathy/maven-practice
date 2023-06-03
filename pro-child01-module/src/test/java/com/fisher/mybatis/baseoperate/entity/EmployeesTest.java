@@ -1,6 +1,6 @@
 package com.fisher.mybatis.baseoperate.entity;
 
-import com.fisher.mybatis.dao.EmployeeMapper;
+import com.fisher.mybatis.mapper.EmployeeMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
@@ -62,7 +62,7 @@ public class EmployeesTest {
         //根据Mapper配置文件的命名空间+SQL语句的id找到具体的SQL语句
 
         //格式：命名空间.SQL语句的id
-        String statement = "com.fisher.mybatis.dao.EmployeeMapper.selectEmployee";
+        String statement = "com.fisher.mybatis.mapper.EmployeeMapper.selectEmployee";
 
         //传入参数
         Integer empId = 1;

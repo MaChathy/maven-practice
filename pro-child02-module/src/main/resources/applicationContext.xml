@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <beans>
+        <!--根据bean标签的id，从IoC容器中获取bean，即组件对象-->
+        <bean id="happyComponent" class="com.fisher.spring.ioc.component.HappyComponent"/>
+
+        <!--根据bean标签的类型，从IoC容器中获取bean，即组件对象-->
+        <bean id="happyComponent2" class="com.fisher.spring.ioc.component.HappyComponent" />
+
+        <!--获取有多个类都实现了同一接口，并且这些类都装配了bean的bean对象-->
+        <bean id="componentInterface1" class="com.fisher.spring.ioc.component.impl.ComponentInterfaceImpl1"/>
+        <bean id="componentInterface2" class="com.fisher.spring.ioc.component.impl.ComponentInterfaceImpl2"/>
+
+        <!--给bean的属性赋值：setter-->
+        <bean id="happyComponent3" class="com.fisher.spring.ioc.component.HappyComponent">
+            <!--property 标签（通过组件的setter方法给组件对象设置属性）
+                name属性：指定属性名（属性名是setter和getter方法定义的，和成员变量名无关）
+                value属性；指定属性名-->
+            <property name="componentName" value="veryHappy"/>
+        </bean>
+
+        <!--给bean的属性赋值：引用外部已声明的bean-->
+        <!--配置HappyMachine对应的bean-->
+        <bean id="happyMachine" class="com.fisher.spring.ioc.component.HappyMachine">
+            <property name="happyMachineName" value="PACE AND LOVE"/>
+        </bean>
+        <!--配置VeryHappyComponent对应的bean，引用了其他bean-->
+        <bean id="happyComponent4" class="com.fisher.spring.ioc.component.VeryHappyComponent">
+            <!--ref属性：通过bean的id引用另一个bean-->
+            <property name="happyMachine" ref="happyMachine"/>
+        </bean>
+    </beans>
+</beans>

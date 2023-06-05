@@ -1,4 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<!--配置自动扫描的包-->
-<!-- 最基本的扫描方式 -->
-<context:component-scan beas-package="com.fisher.annotation.ioc.component"/>

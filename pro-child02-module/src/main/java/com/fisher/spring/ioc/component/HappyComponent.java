@@ -21,4 +21,10 @@ public class HappyComponent {
         log.debug("component do work...");
     }
 
+    public void happyInit(){
+        log.debug("★★★HappyComponent init...★★★");
+    }
+    public void happyDestroy(){
+        log.debug("☆☆HappyComponent destroy...☆☆");
+    }
 }

@@ -1,5 +1,6 @@
 package com.fisher.spring.ioc.component;
 
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
@@ -10,6 +11,7 @@ import lombok.extern.slf4j.Slf4j;
  * @version 1.0.1 2023/6/4 - 19:37
  */
 @Slf4j
+@EqualsAndHashCode
 @Setter
 @Getter
 public class HappyMachine {

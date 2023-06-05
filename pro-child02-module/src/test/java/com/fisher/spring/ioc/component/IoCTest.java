@@ -35,8 +35,10 @@ import java.util.List;
  * v1.9.3 给bean的属性赋值：自动装配
  * v1.9.4 集合类型的bean
  * v1.9.5 FactoryBean 机制
+ * v1.9.6 bean的作用域
+ * v1.9.7 bean的生命周期
  * @author fisher
- * @version 1.9.3 2023-6-5 16:20:43
+ * @version 1.9.7 2023-6-5 17:08:18
  */
 @Slf4j
 public class IoCTest {
@@ -47,12 +49,13 @@ public class IoCTest {
     public void init(){
         iocContainer = new ClassPathXmlApplicationContext("applicationContext.xml");
         log.debug("****\tstart to testing...\t****");
+//        log.debug("★☆★☆★");
     }
-    @After
-    public void clean(){
-        iocContainer = null;
-        log.debug("****\ttest end up...\t****");
-    }
+//    @After
+//    public void clean(){
+//        iocContainer = null;
+//        log.debug("****\ttest end up...\t****");
+//    }
 
     @Test
     public void testExperiment01(){
@@ -173,5 +176,23 @@ public class IoCTest {
         HappyMachine happyMachine = iocContainer.getBean(HappyFactoryBean.class);
 
         log.debug("HappyMachine : "+ happyMachine.getHappyMachineName());
+    }
+
+    @Test
+    public void testExperiment15(){
+        HappyMachine happyMachine01 = (HappyMachine) iocContainer.getBean("happyMachine4");
+        HappyMachine happyMachine02 = (HappyMachine) iocContainer.getBean("happyMachine4");
+
+        log.debug(String.valueOf(happyMachine01 == happyMachine02));
+        log.debug(String.valueOf(happyMachine01.equals(happyMachine02)));
+
+        log.debug("happyMachine1: " + happyMachine01.hashCode());
+        log.debug("happyMachine2: " + happyMachine02.hashCode());
+    }
+
+    @Test
+    public void testExperiment16(){
+        HappyComponent happyComponent = (HappyComponent) iocContainer.getBean("happyComponentLife");
+        happyComponent.doWork();
     }
 }

@@ -1,8 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+            http://www.springframework.org/schema/beans/spring-beans.xsd
+            http://www.springframework.org/schema/context
+            https://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!--引入外部属性文件-->
+    <context:property-placeholder location="classpath:druid.properties"/>
+
     <beans>
+        <!--给bean的值赋值：引入外部属性文件-->
+        <bean id="druidDataSource" class="com.alibaba.druid.pool.DruidDataSource">
+            <property name="driverClassName" value="${jdbc.driver}"/>
+            <property name="url" value="${jdbc.url}"/>
+            <property name="username" value="${jdbc.username}"/>
+            <property name="password" value="${jdbc.password}"/>
+        </bean>
+
+
         <!--根据bean标签的id，从IoC容器中获取bean，即组件对象-->
         <bean id="happyComponent" class="com.fisher.spring.ioc.component.HappyComponent"/>
 
@@ -31,5 +48,17 @@
             <!--ref属性：通过bean的id引用另一个bean-->
             <property name="happyMachine" ref="happyMachine"/>
         </bean>
+
+        <!--给bean的属性赋值：内部bean-->
+        <bean id="happyComponent5" class="com.fisher.spring.ioc.component.VeryHappyComponent">
+            <property name="happyMachine">
+                <!--内部bean：在一个bean内部再声明一个bean
+                    内部bean可以省略id属性，直接用于给属性赋值-->
+                <bean class="com.fisher.spring.ioc.component.HappyMachine">
+                    <property name="happyMachineName" value="JUST DO IT"/>
+                </bean>
+            </property>
+        </bean>
+
     </beans>
 </beans>

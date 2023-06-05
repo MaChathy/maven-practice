@@ -1,11 +1,15 @@
 package com.fisher.spring.ioc.component;
 
+import com.alibaba.druid.pool.DruidDataSource;
+import com.alibaba.druid.pool.DruidPooledConnection;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+import java.sql.SQLException;
 
 
 /**
@@ -15,8 +19,10 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
  * v1.2.1 获取bean ,获取有多个类都实现了同一接口，并且这些类都装配了bean的bean对象
  * v1.3.1 给bean的属性赋值：setter注入
  * v1.4.1 给bean的属性赋值：引用外部以声明的bean
+ * v1.5.1 给bean的属性赋值：内部bean
+ * v1.6.1 给bean的属性赋值：引入外部属性文件
  * @author fisher
- * @version 1.4.1 2023-6-4 19:30:51
+ * @version 1.6.1 2023-6-4 19:56:43
  */
 @Slf4j
 public class IoCTest {
@@ -28,7 +34,6 @@ public class IoCTest {
         iocContainer = new ClassPathXmlApplicationContext("applicationContext.xml");
         log.debug("****\tstart to testing...\t****");
     }
-
     @After
     public void clean(){
         iocContainer = null;
@@ -58,7 +63,6 @@ public class IoCTest {
         ComponentInterface componentInterface1 = iocContainer.getBean(ComponentInterface.class);
         componentInterface1.doMoreWork();
     }
-
     @Test
     public void testExperiment03(){
         HappyComponent happyComponent3 = (HappyComponent) iocContainer.getBean("happyComponent3");
@@ -67,7 +71,6 @@ public class IoCTest {
         //HappyComponent happyComponent3 = iocContainer.getBean(HappyComponent.class);
         log.debug("componentName = "+happyComponent3.getComponentName());
     }
-
     @Test
     public void testExperiment04(){
         VeryHappyComponent happyComponent4 = iocContainer.getBean(VeryHappyComponent.class);
@@ -75,4 +78,24 @@ public class IoCTest {
         happyComponent4.doWork();
     }
 
+    @Test
+    public void testExperiment05(){
+        VeryHappyComponent happyComponent5 = (VeryHappyComponent) iocContainer.getBean("happyComponent5");
+
+        happyComponent5.doWork();
+
+    }
+
+    @Test
+    public void testExperiment06() throws SQLException {
+        DruidDataSource druidDataSource = (DruidDataSource) iocContainer.getBean("druidDataSource");
+
+        DruidPooledConnection connection = druidDataSource.getConnection();
+
+        log.debug("DruidPooledConnection = "+connection);
+
+        connection.close();
+        druidDataSource.close();
+
+    }
 }

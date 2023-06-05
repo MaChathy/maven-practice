@@ -11,11 +11,14 @@ import lombok.extern.slf4j.Slf4j;
  * @version 1.1.1 2023-6-4 19:19:42
  */
 @Slf4j
-@Setter
 @Getter
 public class HappyComponent {
 
     private String componentName;
+
+    public HappyComponent(){
+        System.out.println("Constructing the component...");
+    }
 
     public void doWork(){
         log.debug("component do work...");
@@ -26,5 +29,10 @@ public class HappyComponent {
     }
     public void happyDestroy(){
         log.debug("☆☆HappyComponent destroy...☆☆");
+    }
+
+    public void setComponentName(String componentName) {
+        System.out.println("Setting component name...");
+        this.componentName = componentName;
     }
 }

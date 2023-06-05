@@ -43,19 +43,17 @@ import java.util.List;
 @Slf4j
 public class IoCTest {
 
-    private static ApplicationContext iocContainer ;
+    private final ApplicationContext iocContainer = new ClassPathXmlApplicationContext("applicationContext.xml");
 
     @Before
     public void init(){
-        iocContainer = new ClassPathXmlApplicationContext("applicationContext.xml");
         log.debug("****\tstart to testing...\t****");
 //        log.debug("★☆★☆★");
     }
-//    @After
-//    public void clean(){
-//        iocContainer = null;
-//        log.debug("****\ttest end up...\t****");
-//    }
+    @After
+    public void clean(){
+        log.debug("****\ttest end up...\t****");
+    }
 
     @Test
     public void testExperiment01(){
@@ -193,6 +191,6 @@ public class IoCTest {
     @Test
     public void testExperiment16(){
         HappyComponent happyComponent = (HappyComponent) iocContainer.getBean("happyComponentLife");
-        happyComponent.doWork();
+        log.debug("componentName : "+happyComponent.getComponentName());
     }
 }

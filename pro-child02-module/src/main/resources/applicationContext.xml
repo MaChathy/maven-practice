@@ -148,6 +148,7 @@
           class="com.fisher.spring.ioc.component.HappyComponent"
           init-method="happyInit"
           destroy-method="happyDestroy">
+
         <property name="componentName" value="this is the life of a bean"/>
     </bean>
     <!--bean的后置处理器-->

@@ -21,10 +21,11 @@ import java.sql.SQLException;
  * v1.4.1 给bean的属性赋值：引用外部以声明的bean
  * v1.5.1 给bean的属性赋值：内部bean
  * v1.6.1 给bean的属性赋值：引入外部属性文件
- * v1.7.1 给bean的属性赋值构造器注入
- *
+ * v1.7.1 给bean的属性赋值：构造器注入
+ * v1.8.1 给bean的属性赋值：特殊值处理
+ * v1.9.1 给bean的属性赋值：使用p名称空间（省略标签property）
  * @author fisher
- * @version 1.7.1 2023-6-5 15:27:09
+ * @version 1.8.1 2023-6-5 15:27:09
  */
 @Slf4j
 public class IoCTest {
@@ -116,4 +117,17 @@ public class IoCTest {
 
         log.debug(bean.toString());
     }
+    @Test
+    public void testExperiment09(){
+        PropValue propValue = (PropValue) iocContainer.getBean("propValue");
+
+        log.debug("expression : "+ propValue.getExpression());
+
+        log.debug("commonValue : "+propValue.getCommonValue());
+    }
+    @Test
+    public void testExperiment10(){
+
+    }
+
 }

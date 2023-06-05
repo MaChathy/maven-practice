@@ -83,12 +83,10 @@
             <!--可以使用xml实体代替-->
             <property name="expression" value="a &lt; b"/>
             <!--使用CDATA节-->
-            <!-- CDATA中的C代表Character，是文本、字符的含义，CDATA就表示纯文本数据 -->
-            <!-- XML解析器看到CDATA节就知道这里是纯文本，就不会当作XML标签或属性来解析 -->
-            <!-- 所以CDATA节中写什么符号都随意 -->
             <property name="commonValue">
                 <value><![CDATA[a < b]]></value>
             </property>
+
         </bean>
 
     </beans>

@@ -21,8 +21,10 @@ import java.sql.SQLException;
  * v1.4.1 给bean的属性赋值：引用外部以声明的bean
  * v1.5.1 给bean的属性赋值：内部bean
  * v1.6.1 给bean的属性赋值：引入外部属性文件
+ * v1.7.1 给bean的属性赋值构造器注入
+ *
  * @author fisher
- * @version 1.6.1 2023-6-4 19:56:43
+ * @version 1.7.1 2023-6-5 15:27:09
  */
 @Slf4j
 public class IoCTest {
@@ -63,6 +65,7 @@ public class IoCTest {
         ComponentInterface componentInterface1 = iocContainer.getBean(ComponentInterface.class);
         componentInterface1.doMoreWork();
     }
+
     @Test
     public void testExperiment03(){
         HappyComponent happyComponent3 = (HappyComponent) iocContainer.getBean("happyComponent3");
@@ -77,7 +80,6 @@ public class IoCTest {
 
         happyComponent4.doWork();
     }
-
     @Test
     public void testExperiment05(){
         VeryHappyComponent happyComponent5 = (VeryHappyComponent) iocContainer.getBean("happyComponent5");
@@ -85,7 +87,6 @@ public class IoCTest {
         happyComponent5.doWork();
 
     }
-
     @Test
     public void testExperiment06() throws SQLException {
         DruidDataSource druidDataSource = (DruidDataSource) iocContainer.getBean("druidDataSource");
@@ -97,5 +98,22 @@ public class IoCTest {
         connection.close();
         druidDataSource.close();
 
+    }
+    @Test
+    public void testExperiment07(){
+        VeryHappyComponent happyComponent7 = (VeryHappyComponent) iocContainer.getBean("happyComponent7");
+
+        happyComponent7.doWork();
+
+        String happyMachineName = happyComponent7.getHappyMachine().getHappyMachineName();
+
+        log.debug("happyMachineName: " + happyMachineName);
+
+    }
+    @Test
+    public void testExperiment08(){
+        HappyTeam bean = iocContainer.getBean(HappyTeam.class);
+
+        log.debug(bean.toString());
     }
 }

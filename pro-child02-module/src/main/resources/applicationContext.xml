@@ -60,5 +60,22 @@
             </property>
         </bean>
 
+        <!--给bean的属性赋值：级联属性赋值-->
+        <!--配置关联对象的bean-->
+        <bean id="happyMachine2" class="com.fisher.spring.ioc.component.HappyMachine"/>
+        <bean id="happyComponent7" class="com.fisher.spring.ioc.component.VeryHappyComponent">
+            <!--装配关联对象-->
+            <property name="happyMachine" ref="happyMachine2"/>
+            <!-- 对HappyComponent来说，happyMachine的machineName属性就是级联属性 -->
+            <property name="happyMachine.happyMachineName" value="cascadeValue"/>
+        </bean>
+
+        <!--给bean的属性赋值：构造器注入-->
+        <bean id="happyTeam" class="com.fisher.spring.ioc.component.HappyTeam">
+            <constructor-arg index="0" name="teamName" value="happySHIT"/>
+            <constructor-arg index="1" name="memberCount" value="10"/>
+            <constructor-arg index="2" name="memberSalary" value="22.1"/>
+        </bean>
+
     </beans>
 </beans>

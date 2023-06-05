@@ -129,6 +129,10 @@
                 <property name="happyMachineName" value="machine04"/>
             </bean>
         </util:list>
+        <!--FactoryBean机制-->
+        <bean id="happyMachine3" class="com.fisher.spring.ioc.factory.HappyFactoryBean">
+            <property name="happyMachineName" value="iceCreamMachine"/>
+        </bean>
 
     </beans>
 </beans>

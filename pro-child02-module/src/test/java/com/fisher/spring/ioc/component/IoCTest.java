@@ -3,6 +3,7 @@ package com.fisher.spring.ioc.component;
 import com.alibaba.druid.pool.DruidDataSource;
 import com.alibaba.druid.pool.DruidPooledConnection;
 import com.fisher.spring.controller.HappyController;
+import com.fisher.spring.ioc.factory.HappyFactoryBean;
 import com.fisher.spring.service.HappyService;
 import lombok.ToString;
 import lombok.extern.slf4j.Slf4j;
@@ -10,6 +11,7 @@ import lombok.var;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import org.springframework.beans.factory.FactoryBean;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -32,6 +34,7 @@ import java.util.List;
  * v1.9.2 给bean的属性赋值：集合属性
  * v1.9.3 给bean的属性赋值：自动装配
  * v1.9.4 集合类型的bean
+ * v1.9.5 FactoryBean 机制
  * @author fisher
  * @version 1.9.3 2023-6-5 16:20:43
  */
@@ -163,5 +166,12 @@ public class IoCTest {
             log.debug("machines contain : "+machine.getHappyMachineName());
         }
 
+    }
+
+    @Test
+    public void testExperiment14(){
+        HappyMachine happyMachine = iocContainer.getBean(HappyFactoryBean.class);
+
+        log.debug("HappyMachine : "+ happyMachine.getHappyMachineName());
     }
 }

@@ -2,7 +2,11 @@ package com.fisher.spring.ioc.component;
 
 import com.alibaba.druid.pool.DruidDataSource;
 import com.alibaba.druid.pool.DruidPooledConnection;
+import com.fisher.spring.controller.HappyController;
+import com.fisher.spring.service.HappyService;
+import lombok.ToString;
 import lombok.extern.slf4j.Slf4j;
+import lombok.var;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -10,6 +14,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.sql.SQLException;
+import java.util.List;
 
 
 /**
@@ -24,8 +29,11 @@ import java.sql.SQLException;
  * v1.7.1 给bean的属性赋值：构造器注入
  * v1.8.1 给bean的属性赋值：特殊值处理
  * v1.9.1 给bean的属性赋值：使用p名称空间（省略标签property）
+ * v1.9.2 给bean的属性赋值：集合属性
+ * v1.9.3 给bean的属性赋值：自动装配
+ * v1.9.4 集合类型的bean
  * @author fisher
- * @version 1.8.1 2023-6-5 15:27:09
+ * @version 1.9.3 2023-6-5 16:20:43
  */
 @Slf4j
 public class IoCTest {
@@ -127,7 +135,33 @@ public class IoCTest {
     }
     @Test
     public void testExperiment10(){
+        PropValue propValue1 = (PropValue) iocContainer.getBean("propValue1");
+        log.debug(propValue1.toString());
+    }
+    @Test
+    public void testExperiment11(){
+        HappyTeam happyTeam2 = (HappyTeam) iocContainer.getBean("happyTeam2");
+
+        log.debug("members : "+happyTeam2.getMemberList().toString());
 
     }
+    @Test
+    public void testExperiment12(){
+        HappyController happyController = iocContainer.getBean(HappyController.class);
 
+        HappyService happyService = happyController.getHappyService();
+
+        log.debug("happyService : "+happyService);
+    }
+
+    @Test
+    public void testExperiment13(){
+        @SuppressWarnings("unchecked")
+        List<HappyMachine> machineList = (List<HappyMachine>) iocContainer.getBean("machineList");
+
+        for(var machine : machineList){
+            log.debug("machines contain : "+machine.getHappyMachineName());
+        }
+
+    }
 }

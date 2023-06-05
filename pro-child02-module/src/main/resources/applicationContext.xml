@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:context="http://www.springframework.org/schema/context" xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:util="http://www.springframework.org/schema/util"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
             http://www.springframework.org/schema/beans/spring-beans.xsd
             http://www.springframework.org/schema/context
-            https://www.springframework.org/schema/context/spring-context.xsd">
+            https://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/util https://www.springframework.org/schema/util/spring-util.xsd">
 
     <!--引入外部属性文件-->
     <context:property-placeholder location="classpath:druid.properties"/>
@@ -90,6 +91,44 @@
                 <value><![CDATA[a < b]]></value>
             </property>
         </bean>
+
+        <!--给bean的属性赋值：使用p名称空间(可以省略子标签property)-->
+        <bean id="propValue1" class="com.fisher.spring.ioc.component.PropValue"
+              p:commonValue="true" p:expression="a = a"/>
+
+        <!--给bean的属性赋值：集合属性-->
+        <bean id="happyTeam2" class="com.fisher.spring.ioc.component.HappyTeam">
+            <property name="memberList">
+                <list>
+                    <value>member01</value>
+                    <value>member02</value>
+                    <value>member03</value>
+                </list>
+            </property>
+        </bean>
+        <!--给bean的属性赋值：自动装配-->
+        <bean id="happyService" class="com.fisher.spring.service.HappyService"/>
+        <bean id="happyService1" class="com.fisher.spring.service.HappyService"/>
+
+        <!-- byName：根据bean 的id属性进行匹配-->
+        <bean id="happyController"
+              class="com.fisher.spring.controller.HappyController" autowire="byName"/>
+
+        <!--集合类型的bean-->
+        <util:list id="machineList">
+            <bean class="com.fisher.spring.ioc.component.HappyMachine">
+                <property name="happyMachineName" value="machine01"/>
+            </bean>
+            <bean class="com.fisher.spring.ioc.component.HappyMachine">
+                <property name="happyMachineName" value="machine02"/>
+            </bean>
+            <bean class="com.fisher.spring.ioc.component.HappyMachine">
+                <property name="happyMachineName" value="machine03"/>
+            </bean>
+            <bean class="com.fisher.spring.ioc.component.HappyMachine">
+                <property name="happyMachineName" value="machine04"/>
+            </bean>
+        </util:list>
 
     </beans>
 </beans>

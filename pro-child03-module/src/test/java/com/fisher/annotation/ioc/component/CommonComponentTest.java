@@ -17,7 +17,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 @Slf4j
 public class CommonComponentTest extends TestCase {
 
-    private ApplicationContext iocContainer = new ClassPathXmlApplicationContext();
+    private ApplicationContext iocContainer = new ClassPathXmlApplicationContext("applicationContext.xml");
 
     @Test
     public void testAnnotationcScanBean() {

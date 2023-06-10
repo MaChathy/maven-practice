@@ -29,6 +29,12 @@
             <artifactId>spring-context</artifactId>
             <version>5.3.1</version>
         </dependency>
+        <!--添加基于注解的AOP的依赖-->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-aspects</artifactId>
+            <version>5.3.1</version>
+        </dependency>
         <dependency>
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>

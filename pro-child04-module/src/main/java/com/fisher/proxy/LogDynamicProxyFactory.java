@@ -20,7 +20,7 @@ import java.util.List;
 public class LogDynamicProxyFactory<T> {
 
     //将代理的目标对象声明为成员变量
-    private T target;
+    private final T target;
 
     public LogDynamicProxyFactory(T target) {
         this.target = target;

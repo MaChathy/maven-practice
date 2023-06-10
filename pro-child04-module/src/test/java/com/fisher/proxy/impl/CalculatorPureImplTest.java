@@ -1,16 +1,11 @@
 package com.fisher.proxy.impl;
 
-import com.fisher.ioc.configuration.MyConfiguration;
 import com.fisher.proxy.api.Calculator;
-import com.fisher.proxy.aspect.LogAspect;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
@@ -32,8 +27,8 @@ public class CalculatorPureImplTest {
     @Test
     public void testAnnotationAOP(){
 
-        int result = calculator.add(1,1);
+        int result = calculator.div(1,0);
 
-        log.debug("方法外部 add = " + result);
+        log.debug("方法外部 div = " + result);
     }
 }

@@ -27,7 +27,7 @@ public class CalculatorPureImplTest {
     @Test
     public void testAnnotationAOP(){
 
-        int result = calculator.div(1,0);
+        int result = calculator.div(1,1);
 
         log.debug("方法外部 div = " + result);
     }

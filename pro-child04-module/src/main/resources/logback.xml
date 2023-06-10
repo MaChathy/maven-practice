@@ -7,11 +7,19 @@
         <encoder>
             <!-- 日志输出的格式 -->
             <!-- 按照顺序分别是：时间、日志级别、线程名称、打印日志的类、日志主体内容、换行 -->
-            <pattern>[%d{HH:mm:ss.SSS}] [%-5level] [%thread] [%logger] [%msg]%n</pattern>
+<!--            <pattern>{%d{HH:mm:ss.SSS}} %highlight([%-5level]) %blue([%thread]) [%logger] : %highlight([%msg]) %n</pattern>-->
+            <pattern>%blue({%d{yyyy-MM-dd HH:mm:ss}}) %highlight([%-5level]) <!--%green([${LOG_HOME},%X{X-B3-TraceId:-},%X{X-B3-SpanId:-},%X{X-Span-Export:-}]) %magenta(${PID:-})-->%white(---) %-10(%yellow([%thread])) %boldCyan(%logger{30}:%L) %gray(---) %boldBlue(%msg%n)</pattern>
             <charset>UTF-8</charset>
         </encoder>
     </appender>
-
+    <!--
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <filter class="com.wang.cloud.store.common.LogFilter"/>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <pattern>${FILE_LOG_PATTERN}</pattern>
+        </layout>
+    </appender>
+    -->
     <!-- 设置全局日志级别。日志级别按顺序分别是：TRACE、DEBUG、INFO、WARN、ERROR -->
     <!-- 指定任何一个日志级别都只打印当前级别和后面级别的日志。 -->
     <root level="INFO">

@@ -1,10 +1,6 @@
 package com.fisher.ioc.service;
 
 import com.fisher.ioc.repository.BankMgrMapper;
-import lombok.Getter;
-import lombok.Setter;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 /**
@@ -24,5 +20,4 @@ public class BankMgrService {
     public void getMessages(){
         bankMgrMapper.getMessages();
     }
-
 }

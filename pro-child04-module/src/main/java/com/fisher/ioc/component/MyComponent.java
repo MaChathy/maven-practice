@@ -2,7 +2,6 @@ package com.fisher.ioc.component;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 /**

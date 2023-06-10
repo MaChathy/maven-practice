@@ -1,19 +1,18 @@
 package com.fisher.ioc.repository;
 
-import com.fisher.bankmgr.pojo.BankMgrResource;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Repository;
-
-import java.util.List;
 
 /**
  * 持久化层
  * @author fisher
  * @version 1.0.1 2023/6/6 - 14:59
  */
-@Repository
+@Repository("bankMgrMapper")
+@Slf4j
 public class BankMgrMapper {
 
-
-//    List<BankMgrResource> selectBankMgrResourceList();
-
+    public void getMessages(){
+        log.debug("I am in DAO...");
+    }
 }

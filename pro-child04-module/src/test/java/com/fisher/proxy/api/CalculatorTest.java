@@ -4,6 +4,8 @@ import com.fisher.proxy.LogDynamicProxyFactory;
 import com.fisher.proxy.impl.CalculatorLogImpl;
 import com.fisher.proxy.impl.CalculatorPureImpl;
 import com.fisher.proxy.impl.CalculatorStaticProxyImpl;
+import com.fisher.proxy.impl.SoldierServiceImpl;
+import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -17,6 +19,7 @@ import static org.junit.jupiter.api.Assertions.*;
  * @author fisher
  * @version 1.2.1 2023-6-10 15:19:35
  */
+@Slf4j
 public class CalculatorTest {
 
     @Test
@@ -44,6 +47,23 @@ public class CalculatorTest {
 
         proxy.add(1,1);
         proxy.div(4,1);
+
+    }
+    @Test
+    public void testDynamicProxy2(){
+
+        //创建被代理的目标对象
+        SoldierService target = new SoldierServiceImpl();
+
+        //创建生产代理兑现的工厂
+        LogDynamicProxyFactory<SoldierService> proxyFactory = new LogDynamicProxyFactory<>(target);
+
+        //生产代理对象
+        SoldierService proxy = proxyFactory.getProxy();
+
+        //通过代理对象调用目标方法
+        String soldierNameById = proxy.getSoldierNameById(null);
+        log.debug("getSoldierNameById = "+ soldierNameById );
 
     }
 

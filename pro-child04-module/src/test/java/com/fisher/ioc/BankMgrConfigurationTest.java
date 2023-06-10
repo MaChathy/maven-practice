@@ -10,12 +10,12 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 /**
- * 自动装配AutoWeird测试
+ * 自动装配AutoWeird测试<br>
+ * <br>v1.1.1 自动扫描装配
+ * <br>v1.2.1 完全注解开发
  *
- * v1.1.1 自动扫描装配
- * v1.2.1 完全注解开发
  * @author fisher
- * @version 1.2.1 2023-6-10 12:16:05
+ * @version 1.3.1 2023-6-10 13:56:36
  */
 class BankMgrConfigurationTest {
 
@@ -35,11 +35,6 @@ class BankMgrConfigurationTest {
         ApplicationContext iocAnnotationContainer = new AnnotationConfigApplicationContext(MyConfiguration.class);
 
         ((BankMgrController) iocAnnotationContainer.getBean("bankMgrController")).getMessages();
-
-    }
-
-    @Test
-    public void testAllAnnotations1() {
 
     }
 }

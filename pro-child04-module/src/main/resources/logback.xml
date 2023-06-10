@@ -8,7 +8,7 @@
             <!-- 日志输出的格式 -->
             <!-- 按照顺序分别是：时间、日志级别、线程名称、打印日志的类、日志主体内容、换行 -->
 <!--            <pattern>{%d{HH:mm:ss.SSS}} %highlight([%-5level]) %blue([%thread]) [%logger] : %highlight([%msg]) %n</pattern>-->
-            <pattern>%blue({%d{yyyy-MM-dd HH:mm:ss}}) %highlight([%-5level]) <!--%green([${LOG_HOME},%X{X-B3-TraceId:-},%X{X-B3-SpanId:-},%X{X-Span-Export:-}]) %magenta(${PID:-})-->%white(---) %-10(%yellow([%thread])) %boldCyan(%logger{30}:%L) %gray(---) %boldBlue(%msg%n)</pattern>
+            <pattern>%green({%d{yyyy-MM-dd HH:mm:ss}}) %highlight([%-5level]) <!--%green([${LOG_HOME},%X{X-B3-TraceId:-},%X{X-B3-SpanId:-},%X{X-Span-Export:-}]) %magenta(${PID:-})-->%white(---) %-10(%yellow([%thread])) %boldCyan(%logger:%L) %gray(---) %boldBlue(%msg%n)</pattern>
             <charset>UTF-8</charset>
         </encoder>
     </appender>

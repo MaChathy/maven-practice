@@ -28,7 +28,6 @@ public class MyConfiguration {
 
     @Bean
     public BankMgrMapper getBankMgrMapper(){
-
         return new BankMgrMapper();
     }
 

@@ -4,7 +4,10 @@ import com.fisher.proxy.api.Calculator;
 import lombok.extern.slf4j.Slf4j;
 
 /**
- * Calculator 接口的日志实现
+ * Calculator 接口的日志实现<br>
+ * <br>
+ * 存在问题：附加功能分散在各个业务功能的代码中，不利于维护<br>
+ * 解决思路：解耦，将附加功能从业务代码中抽取出来<br>
  * @author fisher
  * @version 1.0.1 2023/6/10 - 14:20
  */

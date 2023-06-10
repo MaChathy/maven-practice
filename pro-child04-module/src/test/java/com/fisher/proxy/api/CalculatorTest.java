@@ -2,14 +2,19 @@ package com.fisher.proxy.api;
 
 import com.fisher.proxy.impl.CalculatorLogImpl;
 import com.fisher.proxy.impl.CalculatorPureImpl;
+import com.fisher.proxy.impl.CalculatorStaticProxyImpl;
 import org.junit.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 /**
- * Calculator接口测试类
+ * Calculator接口测试类<br>
+ * v1.0.1 测试Calculator的日志实现<br>
+ * v1.1.1 测试Calculator的静态代理实现<br>
+ *
+ *
  * @author fisher
- * @version 1.0.1 2023/6/10 - 14:24
+ * @version 1.1.1 2023-6-10 14:41:24
  */
 public class CalculatorTest {
 
@@ -19,6 +24,12 @@ public class CalculatorTest {
         CalculatorLogImpl calculatorLog = new CalculatorLogImpl();
         calculatorPure.add(2,2);
         calculatorLog.add(1,1);
+    }
+
+    @Test
+    public void testStaticProxy(){
+        CalculatorStaticProxyImpl staticProxy = new CalculatorStaticProxyImpl(new CalculatorPureImpl());
+        staticProxy.add(4,4);
     }
 
 }

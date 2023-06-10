@@ -26,7 +26,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 public class CalculatorPureImplTest {
 
     @Autowired
-    @Qualifier(value = "test1")
+    @Qualifier(value = "annotationAOP")
     private Calculator calculator;
 
     @Test
@@ -34,6 +34,6 @@ public class CalculatorPureImplTest {
 
         int result = calculator.add(1,1);
 
-        log.debug("");
+        log.debug("方法外部 add = " + result);
     }
 }

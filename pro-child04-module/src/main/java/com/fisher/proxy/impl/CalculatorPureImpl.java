@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
  * @version 1.1.1 2023-6-10 17:29:37
  */
 @Slf4j
-@Component(value = "test1")
+@Component(value = "annotationAOP")
 public class CalculatorPureImpl implements Calculator {
     @Override
     public int add(int i, int j) {

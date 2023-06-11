@@ -1,5 +1,7 @@
 package com.fisher.proxy.api;
 
+import org.springframework.stereotype.Service;
+
 /**
  * 动态代理测试类
  * @author fisher

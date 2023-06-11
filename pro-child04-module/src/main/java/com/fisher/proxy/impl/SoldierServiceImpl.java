@@ -2,6 +2,7 @@ package com.fisher.proxy.impl;
 
 import com.fisher.proxy.api.SoldierService;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Service;
 
 /**
  * SoldierService 实现类
@@ -9,6 +10,7 @@ import lombok.extern.slf4j.Slf4j;
  * @version 1.0.1 2023/6/10 - 15:27
  */
 @Slf4j
+@Service(value = "outDeclarePointCut")
 public class SoldierServiceImpl implements SoldierService {
     @Override
     public int saveSoldier(String soldierName) {

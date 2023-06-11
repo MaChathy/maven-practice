@@ -91,7 +91,7 @@ public class LogAspect {
     /**
      * 切入点表达式重用
      */
-    @Pointcut("execution(public int com.fisher.proxy.api.Calculator.*(..))")
+    @Pointcut("execution(public int com.fisher.proxy.api.Calculator.div(..))")
     public void declareCalculatorPointcut(){ }
 
 }

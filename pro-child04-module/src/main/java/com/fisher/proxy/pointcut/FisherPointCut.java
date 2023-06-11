@@ -12,17 +12,20 @@ import org.springframework.stereotype.Component;
 public class FisherPointCut {
 
     @Pointcut(value = "execution(public int *..Calculator.*(int,int))")
-    public void fisherGlobalPointCut(){
-    }
+    public void fisherGlobalPointCut(){ }
 
+    @Pointcut(value = "execution(public int *..Calculator.*(int,int))")
+    public void fisherSecondaryPointCut(){ }
+
+    /**
+     * 重用日志切入点
+     */
     @Pointcut(value = "execution(* *..*.*(..))")
     public void fisherGlobalLogPointCut(){ }
 
-    @Pointcut(value = "execution(public int *..Calculator.*(int,int))")
-    public void fisherSecondaryPointCut(){
-    }
-
+    /**
+     * 重用Service层事务切入点
+     */
     @Pointcut(value = "execution(* *..*Service.*(..))")
-    public void transactionPointCut(){
-    }
+    public void transactionPointCut(){ }
 }

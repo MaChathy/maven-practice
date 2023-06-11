@@ -10,7 +10,6 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-import java.util.concurrent.ThreadPoolExecutor;
 
 /**
  * 整合junit测试
@@ -31,9 +30,4 @@ public class JunitIntegrationSpring {
         bankMgrController.getMessages();
     }
 
-    @Test
-    public void testSome(){
-        ExecutorService executorService = Executors.newFixedThreadPool(1);
-
-    }
 }

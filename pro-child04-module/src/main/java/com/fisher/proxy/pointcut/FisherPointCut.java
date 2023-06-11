@@ -22,6 +22,5 @@ public class FisherPointCut {
 
     @Pointcut(value = "execution(* *..*Service.*(..))")
     public void transactionPointCut(){
-
     }
 }

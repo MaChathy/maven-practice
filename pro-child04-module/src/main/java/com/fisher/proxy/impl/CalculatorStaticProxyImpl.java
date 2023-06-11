@@ -14,7 +14,9 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class CalculatorStaticProxyImpl implements Calculator {
 
-    //将代理的目标声明为成员边量
+    /**
+     * 将代理的目标声明为成员边量
+     */
     private final Calculator target;
 
     public CalculatorStaticProxyImpl(Calculator target){

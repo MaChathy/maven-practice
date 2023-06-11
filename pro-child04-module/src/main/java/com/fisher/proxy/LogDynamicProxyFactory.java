@@ -19,7 +19,9 @@ import java.util.List;
 @Slf4j
 public class LogDynamicProxyFactory<T> {
 
-    //将代理的目标对象声明为成员变量
+    /**
+     * 将代理的目标对象声明为成员变量
+     */
     private final T target;
 
     public LogDynamicProxyFactory(T target) {

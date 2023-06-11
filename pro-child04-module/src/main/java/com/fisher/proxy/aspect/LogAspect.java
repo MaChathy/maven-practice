@@ -22,8 +22,11 @@ import java.util.List;
 @Component
 public class LogAspect {
 
-    //Before注解：声明当前方法是前置方法
-    //value属性：指定切入点表达式，由切入点表达式控制当前通知方法要作用在那个目标方法上
+    /**
+     * Before注解：声明当前方法是前置方法<br>
+     *     <br>value属性：指定切入点表达式，由切入点表达式控制当前通知方法要作用在那个目标方法上
+     * @param joinPoint 切入点
+     */
     @Before(value = "execution(public int com.fisher.proxy.api.Calculator.div(int,int))")
     public void printLogBeforeCore(JoinPoint joinPoint){
         //通过JoinPoint对象获取目标方法的签名对象，即一个方法的全部信息
@@ -44,16 +47,22 @@ public class LogAspect {
         log.debug("[AOP前置通知] "+ methodName +"方法开始,参数为："+argsList);
     }
 
-    //After注解：声明当前方法是后置方法
+    /**
+     *  After注解：声明当前方法是后置方法
+     */
     @After(value = "execution(public int com.fisher.proxy.api.Calculator.div(int,int))")
     public void printLogAfterCore(){
         log.debug("[AOP后置通知] 方法最终结束...");
     }
 
-    //AfterReturning注解：标记返回通知方法
-    //在返回通知中获取目标方法返回值分为两步：
-    //1.在@AfterReturning注解中通过returning属性设置一个名称
-    //2.使用returning属性设置的名称在通知方法中声明一个对应的参数
+    /**
+     * AfterReturning注解：标记返回通知方法<br/>
+     *     <br>在返回通知中获取目标方法返回值分为两步：<br/>
+     *     1.在@AfterReturning注解中通过returning属性设置一个名称<br/>
+     *     2.使用returning属性设置的名称在通知方法中声明一个对应的参数
+     * @param joinPoint 切入点
+     * @param targetMethodReturnValue 方法返回值
+     */
     @AfterReturning(
             value = "execution(public int com.fisher.proxy.api.Calculator.div(int,int))",
             returning = "targetMethodReturnValue"
@@ -63,7 +72,11 @@ public class LogAspect {
         log.debug("[AOP返回通知]"+methodName+"方法成功返回,返回值："+targetMethodReturnValue);
     }
 
-    //AfterThrowing注解：标记异常通知方法
+    /**
+     * AfterThrowing注解：标记异常通知方法
+     * @param joinPoint 切入点
+     * @param targetMethodException 方法抛出的异常
+     */
     @AfterThrowing(
             value = "execution(public int com.fisher.proxy.api.Calculator.div(int,int))",
             throwing = "targetMethodException"

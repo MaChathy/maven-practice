@@ -14,8 +14,9 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
  * AOP测试类<br>
  * <br> v1.0.1 基于注解"@Aspect"的AOP
  * <br> v1.1.1 重用切入点测试
+ * <br> v1.3.1 环绕通知
  * @author fisher
- * @version 1.1.1 2023-6-11 13:09:39
+ * @version 1.2.1 2023-6-11 13:37:03
  */
 @Slf4j
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -52,5 +53,11 @@ public class CalculatorPureImplTest {
     public void testOutDeclarePointCut(){
         soldierService.getSoldierNameById(1);
         calculator.mul(1,4);
+    }
+
+    @Test
+    public void testAroundTransactionPointCut(){
+        String soldierNameById = soldierService.getSoldierNameById(1);
+        log.debug("方法外部 soldierNameById = "+soldierNameById);
     }
 }

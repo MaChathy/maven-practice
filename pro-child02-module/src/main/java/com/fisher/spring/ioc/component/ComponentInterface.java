@@ -7,10 +7,17 @@ package com.fisher.spring.ioc.component;
  */
 public interface ComponentInterface {
 
+    /**
+     * a message
+     * @return something
+     */
     default String doWork(){
         return ("**Implementing the ComponentInterface**");
     }
 
+    /**
+     * refer some information
+     */
     void doMoreWork();
 
 }

@@ -3,7 +3,6 @@ package com.fisher.bankmgr.algorithm;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
-import java.util.Scanner;
 
 /**
  * 模拟银行家算法

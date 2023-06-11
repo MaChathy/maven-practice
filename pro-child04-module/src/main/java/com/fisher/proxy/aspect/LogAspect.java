@@ -1,6 +1,5 @@
 package com.fisher.proxy.aspect;
 
-import jdk.nashorn.internal.ir.CallNode;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.Signature;
@@ -48,11 +47,13 @@ public class LogAspect {
     }
 
     /**
-     *  After注解：声明当前方法是后置方法
+     * After注解：声明当前方法是后置方法
+     * @param joinPoint 切入点
      */
     @After(value = "execution(public int com.fisher.proxy.api.Calculator.div(int,int))")
-    public void printLogAfterCore(){
-        log.debug("[AOP后置通知] 方法最终结束...");
+    public void printLogAfterCore(JoinPoint joinPoint){
+        String methodName = joinPoint.getSignature().getName();
+        log.debug("[AOP后置通知]"+methodName+"方法最终结束...");
     }
 
     /**

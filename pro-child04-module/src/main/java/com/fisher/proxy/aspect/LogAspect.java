@@ -13,8 +13,9 @@ import java.util.List;
  * Calculator接口的 日志切面类
  * <br>v1.0.1 通过注解的aspect
  * <br>v1.1.1 各个通知获取详细信息
+ * <br>v1.2.1 使用内部重用切入点表达式表达式
  * @author fisher
- * @version 1.1.1 2023-6-10 19:42:43
+ * @version 1.2.1 2023-6-11 11:42:57
  */
 @Aspect
 @Slf4j
@@ -26,7 +27,7 @@ public class LogAspect {
      *     <br>value属性：指定切入点表达式，由切入点表达式控制当前通知方法要作用在那个目标方法上
      * @param joinPoint 切入点
      */
-    @Before(value = "execution(public int com.fisher.proxy.api.Calculator.div(int,int))")
+    @Before(value = "declareCalculatorPointcut()")
     public void printLogBeforeCore(JoinPoint joinPoint){
         //通过JoinPoint对象获取目标方法的签名对象，即一个方法的全部信息
         Signature signature = joinPoint.getSignature();
@@ -50,7 +51,7 @@ public class LogAspect {
      * After注解：声明当前方法是后置方法
      * @param joinPoint 切入点
      */
-    @After(value = "execution(public int com.fisher.proxy.api.Calculator.div(int,int))")
+    @After(value = "declareCalculatorPointcut()")
     public void printLogAfterCore(JoinPoint joinPoint){
         String methodName = joinPoint.getSignature().getName();
         log.debug("[AOP后置通知]"+methodName+"方法最终结束...");
@@ -65,7 +66,7 @@ public class LogAspect {
      * @param targetMethodReturnValue 方法返回值
      */
     @AfterReturning(
-            value = "execution(public int com.fisher.proxy.api.Calculator.div(int,int))",
+            value = "declareCalculatorPointcut()",
             returning = "targetMethodReturnValue"
     )
     public void printLogAfterSuccess(JoinPoint joinPoint,Object targetMethodReturnValue){
@@ -79,13 +80,19 @@ public class LogAspect {
      * @param targetMethodException 方法抛出的异常
      */
     @AfterThrowing(
-            value = "execution(public int com.fisher.proxy.api.Calculator.div(int,int))",
+            value = "declareCalculatorPointcut())",
             throwing = "targetMethodException"
     )
     public void printLogAfterFailure(JoinPoint joinPoint,Throwable targetMethodException){
         String methodName = joinPoint.getSignature().getName();
         log.debug("[AOP异常通知]"+methodName+" 方法抛出异常,异常信息："+targetMethodException.getClass()+": "+targetMethodException.getMessage());
     }
+
+    /**
+     * 切入点表达式重用
+     */
+    @Pointcut("execution(public int com.fisher.proxy.api.Calculator.*(..))")
+    public void declareCalculatorPointcut(){ }
 
 }
 

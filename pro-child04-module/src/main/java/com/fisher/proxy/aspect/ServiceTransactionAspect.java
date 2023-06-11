@@ -5,17 +5,22 @@ import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.Signature;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
+import org.junit.jupiter.api.Order;
 import org.springframework.stereotype.Component;
 
 import java.util.Arrays;
 
 /**
- * Service层 事务切入点
+ * Service层 事务环绕通知
+ * <br/> 使用<code>@Order</code>注解可以控制切面的优先级:
+ * <br/><code>@Order</code>(较小的数) 优先级高
+ * <br/><code>@Order</code>(较大的数) 优先级低<br>
  * @author fisher
  * @version 1.0.1 2023/6/11 - 13:17
  */
 @Slf4j
 @Aspect
+@Order(1)
 @Component
 public class ServiceTransactionAspect {
 
@@ -39,24 +44,27 @@ public class ServiceTransactionAspect {
         //声明目标方法的返回值
         Object targetMethodReturnValue = null;
 
-        //开启事务（模拟）
+        //事务流程（模拟）
         try{
+            //开启事务
             log.debug("[AOP环绕通知] 开启事务,方法名："+methodName+",参数列表："+ Arrays.asList(args));
 
             // 通过ProceedingJoinPoint对象调用目标方法,并将目标方法的返回值传出
             targetMethodReturnValue = joinPoint.proceed(args);
 
+            //提交事务
             log.debug("[AOP环绕通知] 提交事务,方法名："+methodName+",方法返回值："+targetMethodReturnValue);
 
         }catch (Throwable throwable){
 
-            log.debug("[AOP环绕通知] 回滚事务,方法名："+methodName+",异常信息："+throwable.getClass()+":"+throwable.getMessage());
+            //回滚事务
+            log.debug("[AOP环绕通知] 回滚事务,方法名："+methodName+",异常信息："+throwable.getClass().getName()+":"+throwable.getMessage());
 
         }finally {
-
+            //释放资源
             log.debug("[AOP环绕通知] 释放数据库连接,方法名："+methodName);
         }
-
+        //返回目标方法的返回值
         return targetMethodReturnValue;
     }
 }

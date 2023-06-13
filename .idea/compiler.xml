@@ -12,6 +12,7 @@
         <module name="pro-child02-module" />
         <module name="pro-child03-module" />
         <module name="pro-child04-module" />
+        <module name="pro-child05-module" />
       </profile>
     </annotationProcessing>
   </component>

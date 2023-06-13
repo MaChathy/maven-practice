@@ -2,17 +2,23 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
-       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
-                            http://www.springframework.org/schema/beans/spring-beans.xsd
-                            http://www.springframework.org/schema/context
-                            https://www.springframework.org/schema/context/spring-context.xsd
-                            http://www.springframework.org/schema/aop
-                            https://www.springframework.org/schema/aop/spring-aop.xsd">
-    <!--开启基于注解的AOP功能-->
-    <!--<aop:aspectj-autoproxy/>-->
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        https://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/aop
+        https://www.springframework.org/schema/aop/spring-aop.xsd
+        http://www.springframework.org/schema/tx
+        http://www.springframework.org/schema/tx/spring-tx.xsd">
     <!--配置自动扫描-->
-    <context:component-scan base-package="com.fisher"/>
+    <context:component-scan base-package="com.fisher.mybatis"/>
+
+    <!--开启基于注解的AOP功能-->
+<!--    <aop:aspectj-autoproxy/>-->
+
+    <!--开启基于注解的声明式事务-->
+    <tx:annotation-driven transaction-manager="transactionManager"/>
 
     <!--导入外部属性文件-->
     <context:property-placeholder location="classpath:jdbc.properties"/>
@@ -30,6 +36,12 @@
     <!--配置JdbcTemplate-->
     <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
         <!--装配数据源-->
+        <property name="dataSource" ref="druidDataSource"/>
+    </bean>
+
+    <!--配置事务管理器-->
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <!--事务管理器的bean只需要装配数据源，其他属性默认即可-->
         <property name="dataSource" ref="druidDataSource"/>
     </bean>
 </beans>

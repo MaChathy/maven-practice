@@ -31,9 +31,6 @@ public class CalculatorPureImplTest {
     @Qualifier(value = "outDeclarePointCut")
     private SoldierService soldierService;
 
-    @Autowired
-    private EmployeeService employeeService;
-
     @Test
     public void testAnnotationAOP(){
 
@@ -61,12 +58,6 @@ public class CalculatorPureImplTest {
     public void testAroundTransactionPointCut(){
         String soldierNameById = soldierService.getSoldierNameById(1);
         log.debug("方法外部 soldierNameById = "+soldierNameById);
-    }
-
-    @Test
-    public void testWithoutInterface(){
-        String employees = employeeService.getEmployees();
-        log.debug("方法外部 getEmployees = "+employees);
     }
 
 }

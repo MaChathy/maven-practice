@@ -13,6 +13,22 @@
         <element id="directory" name="classes">
           <element id="module-output" name="pro-child01-module" />
         </element>
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="Maven: org.mybatis:mybatis:3.5.13" />
+          <element id="library" level="project" name="Maven: mysql:mysql-connector-java:8.0.27" />
+          <element id="library" level="project" name="Maven: com.google.protobuf:protobuf-java:3.11.4" />
+          <element id="library" level="project" name="Maven: javax.servlet:servlet-api:2.5" />
+          <element id="library" level="project" name="Maven: ch.qos.logback:logback-classic:1.2.3" />
+          <element id="library" level="project" name="Maven: ch.qos.logback:logback-core:1.2.3" />
+          <element id="library" level="project" name="Maven: org.slf4j:slf4j-api:1.7.25" />
+          <element id="library" level="project" name="Maven: org.testng:testng:7.8.0" />
+          <element id="library" level="project" name="Maven: com.beust:jcommander:1.82" />
+          <element id="library" level="project" name="Maven: org.webjars:jquery:3.6.1" />
+          <element id="library" level="project" name="Maven: org.junit.jupiter:junit-jupiter-api:5.10.0-M1" />
+          <element id="library" level="project" name="Maven: org.opentest4j:opentest4j:1.2.0" />
+          <element id="library" level="project" name="Maven: org.junit.platform:junit-platform-commons:1.10.0-M1" />
+          <element id="library" level="project" name="Maven: org.apiguardian:apiguardian-api:1.1.2" />
+        </element>
       </element>
       <element id="directory" name="META-INF">
         <element id="file-copy" path="$PROJECT_DIR$/pro-child01-module/target/pro-child01-module-1.0-SNAPSHOT/META-INF/MANIFEST.MF" />

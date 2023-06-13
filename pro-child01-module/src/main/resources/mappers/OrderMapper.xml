@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis//DTD Mapper 3.0 //EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fisher.mybatis.mapper.OrderMapper">
+
+    <resultMap id="selectOrderWithCustomerResultMap" type="com.fisher.mybatis.baseoperate.entity.Order">
+        <!--设置Order类中的属性和字段名之间的关系-->
+        <id column="order_id" property="orderId"/>
+
+        <result column="order_name" property="orderName"/>
+
+        <result column="customer_id" property="customerId"/>
+
+        <!--使用association配置“对一”关联关系-->
+        <!--property属性：在Order类中对一的一端进行引用时使用的属性名-->
+        <association property="customer" javaType="com.fisher.mybatis.baseoperate.entity.Customer">
+<!--            配置Customer类的属性和字段名之间的关系-->
+            <id column="customer_id" property="customerId"/>
+            <result column="customer_name" property="customerName"/>
+
+        </association>
+
+    </resultMap>
+
+    <select id="selectOrderWithCustomer" resultMap="selectOrderWithCustomerResultMap">
+        select order_id,order_name,c.customer_id,customer_name
+        from t_order o
+        LEFT JOIN t_customer c
+        on o.customer_id = c.customer_id
+        where o.order_id=#{orderId}
+    </select>
+
+</mapper>

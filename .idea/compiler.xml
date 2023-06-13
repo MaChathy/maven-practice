@@ -15,5 +15,12 @@
         <module name="pro-child05-module" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="mvn-pro-dev-parent" target="1.8" />
+      <module name="pro-child01-module" target="1.8" />
+      <module name="pro-child02-module" target="1.8" />
+      <module name="pro-child03-module" target="1.8" />
+      <module name="pro-child04-module" target="1.8" />
+    </bytecodeTargetLevel>
   </component>
 </project>

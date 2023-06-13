@@ -20,7 +20,6 @@ import java.util.Arrays;
  */
 @Slf4j
 @Aspect
-@Order(1)
 @Component
 public class ServiceTransactionAspect {
 

@@ -1,9 +1,10 @@
 package com.fisher.mybatis.service;
 
-import com.fisher.mybatis.mapper.EmployeeDao;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Qualifier;
+import com.fisher.mybatis.mapper.EmployeeDao;
 import org.springframework.stereotype.Service;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Transactional;
 
 /**
@@ -25,6 +26,12 @@ public class EmployeeService {
         this.employeeDao = employeeDao;
     }
 
+    public String getEmployeeNameById(Integer empId){
+        String name = employeeDao.selectEmployeeNameById(empId);
+        log.debug("getEmployeeNameById : "+name);
+        return name;
+    }
+
     @Transactional(readOnly = false,timeout = 3)
     public void updateTwice(
             Integer empIdEditName,String newName,
@@ -34,10 +41,9 @@ public class EmployeeService {
         employeeDao.updateEmployeeSalaryById(empIdEditSalary,newSalary);
     }
 
-    public String getEmployeeNameById(Integer empId){
-        String name = employeeDao.selectEmployeeNameById(empId);
-        log.debug("getEmployeeNameById : "+name);
-        return name;
+    @Transactional(isolation = Isolation.READ_UNCOMMITTED,readOnly = false)
+    public void updateEmployeeNameById(Integer empId,String empName){
+        employeeDao.updateEmployeeNameById(empId,empName);
     }
 
 }

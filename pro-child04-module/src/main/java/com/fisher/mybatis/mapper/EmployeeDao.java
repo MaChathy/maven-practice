@@ -24,15 +24,10 @@ public class EmployeeDao {
     public void updateEmployeeNameById(Integer empId,String empName){
         String sql = "update t_emp set emp_name = ? where emp_id = ?";
         jdbcTemplate.update(sql, empName, empId);
+        int i = 10/0;
     }
 
     public void updateEmployeeSalaryById(Integer empId,Double empSalary){
-        try {
-            TimeUnit.SECONDS.sleep(5);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-
         String sql = "UPDATE t_emp set emp_salary = ? where emp_id = ?";
         jdbcTemplate.update(sql,empSalary, empId);
     }

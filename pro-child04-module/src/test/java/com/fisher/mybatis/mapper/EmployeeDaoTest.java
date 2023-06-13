@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * 测试Dao层
@@ -29,6 +28,7 @@ public class EmployeeDaoTest {
     @Qualifier(value = "employeeService")
     private EmployeeService employeeService;
 
+    /*
     @Test
     public void testSelectEmployeeNameById(){
         String employeeNameById = employeeDao.selectEmployeeNameById(1);
@@ -40,11 +40,21 @@ public class EmployeeDaoTest {
     public void testUpdateEmpTwiceWithoutTransactionManager(){
         employeeService.updateTwice(1,"test2",1,1024.1);
     }
+     */
 
     @Test
     public void testReadOnlyTransactionManager(){
-        String employeeNameById = employeeService.getEmployeeNameById(1);
+        String employeeNameById = employeeService.getEmployeeNameById(2);
         log.debug("readOnlyTransactionManager = " + employeeNameById);
+    }
+
+    @Test
+    public void testIsolation(){
+        String empName = "isolation";
+        Integer empId = 2;
+        employeeService.updateEmployeeNameById(empId,empName);
+        String employeeNameById = employeeService.getEmployeeNameById(empId);
+        log.debug("Isolation empName: " + employeeNameById);
     }
 
 }

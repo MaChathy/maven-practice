@@ -2,6 +2,9 @@
 
 *.iml
 
+*.jar
+
+/out/
 /pro-child01-module/target/test-classes/
 /pro-child01-module/target/classes/
 /pro-child02-module/target/test-classes/

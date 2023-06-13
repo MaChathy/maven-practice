@@ -10,11 +10,14 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
+import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import javax.sql.DataSource;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -67,5 +70,12 @@ public class JDBCTest {
         List<Employee> query = jdbcTemplate.query(sql, rowMapper);
         for(var e: query)
             log.debug(e.toString());
+    }
+
+    @Test
+    public void testTransaction(){
+        DataSourceTransactionManager dataSourceTransactionManager = new DataSourceTransactionManager();
+
+
     }
 }

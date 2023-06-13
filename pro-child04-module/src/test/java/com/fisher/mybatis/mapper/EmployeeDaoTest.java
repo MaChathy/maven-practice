@@ -41,4 +41,10 @@ public class EmployeeDaoTest {
         employeeService.updateTwice(1,"test2",1,1024.1);
     }
 
+    @Test
+    public void testReadOnlyTransactionManager(){
+        String employeeNameById = employeeService.getEmployeeNameById(1);
+        log.debug("readOnlyTransactionManager = " + employeeNameById);
+    }
+
 }

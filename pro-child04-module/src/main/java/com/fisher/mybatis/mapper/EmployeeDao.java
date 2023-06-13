@@ -1,9 +1,10 @@
 package com.fisher.mybatis.mapper;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
+
+import java.util.concurrent.TimeUnit;
 
 /**
  * 基于注解的事务测试
@@ -26,7 +27,13 @@ public class EmployeeDao {
     }
 
     public void updateEmployeeSalaryById(Integer empId,Double empSalary){
-        String sql = "UPDATE t_emps set emp_salary = ? where emp_id = ?";
+        try {
+            TimeUnit.SECONDS.sleep(5);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        String sql = "UPDATE t_emp set emp_salary = ? where emp_id = ?";
         jdbcTemplate.update(sql,empSalary, empId);
     }
 

@@ -18,31 +18,35 @@
     </properties>
 
     <dependencies>
-        <!--spring-context依赖-->
+        <!--spring-context依赖
+        https://mvnrepository.com/artifact/org.springframework/spring-context -->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-context</artifactId>
-            <version>5.3.1</version>
+            <version>5.3.14</version>
         </dependency>
         <!--Spring 持久化层支持包,需要使用orm、jdbc、tx三个jar包-->
-        <!--导入orm包就可以通过Maven的依赖传递把其他两个包导入-->
+        <!--导入orm包就可以通过Maven的依赖传递把其他两个包导入
+        https://mvnrepository.com/artifact/org.springframework/spring-orm-->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-orm</artifactId>
-            <version>5.3.1</version>
+            <version>5.3.14</version>
         </dependency>
-        <!--spring-test依赖-->
+        <!--spring-test依赖
+        https://mvnrepository.com/artifact/org.springframework/spring-test -->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-test</artifactId>
-            <version>5.3.1</version>
+            <version>5.3.14</version>
             <scope>test</scope>
         </dependency>
-        <!--添加基于注解的AOP的依赖-->
+        <!--添加基于注解的AOP的依赖
+        https://mvnrepository.com/artifact/org.springframework/spring-aspects-->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-aspects</artifactId>
-            <version>5.3.1</version>
+            <version>5.3.14</version>
         </dependency>
         <!--junit-jupiter测试依赖-->
         <dependency>
@@ -51,38 +55,44 @@
             <version>RELEASE</version>
             <scope>compile</scope>
         </dependency>
-        <!--junit测试依赖-->
+        <!--junit测试依赖
+        https://mvnrepository.com/artifact/junit/junit -->
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <version>4.13.2</version>
             <scope>test</scope>
         </dependency>
-        <!--mysql驱动-->
+        <!--mysql驱动
+        https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
             <version>8.0.27</version>
         </dependency>
-        <!--数据源-->
+        <!--数据源
+        https://mvnrepository.com/artifact/com.alibaba/druid -->
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>druid</artifactId>
             <version>1.2.16</version>
         </dependency>
-        <!--mybatis依赖-->
+        <!--mybatis依赖
+        https://mvnrepository.com/artifact/org.mybatis/mybatis -->
         <dependency>
             <groupId>org.mybatis</groupId>
             <artifactId>mybatis</artifactId>
             <version>3.5.13</version>
         </dependency>
-        <!--logback依赖-->
+        <!--logback依赖
+        https://mvnrepository.com/artifact/ch.qos.logback/logback-classic -->
         <dependency>
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>
             <version>1.2.3</version>
         </dependency>
-        <!--lombok依赖-->
+        <!--lombok依赖
+        https://mvnrepository.com/artifact/org.projectlombok/lombok -->
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>

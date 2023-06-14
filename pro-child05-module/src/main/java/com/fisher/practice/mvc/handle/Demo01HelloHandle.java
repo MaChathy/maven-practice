@@ -5,6 +5,7 @@ import com.fisher.practice.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -82,14 +83,14 @@ public class Demo01HelloHandle {
             @RequestParam("userName") String userName,
             @RequestParam("email") String email,
             @RequestParam("userPwd") String password,
-            HttpSession session ){
+            Model model){
 
         log.debug("【用户登陆信息】userName:"+userName+",email:"+email+",password:"+password);
         if ((userServiceImpl.selectOneUser(email,password,userName) != -1 )) {
             log.debug("登陆成功");
             User user = new User(userName,email,password);
-            session.setAttribute("userLocal",user);
-            session.setAttribute("userName",userName);
+            model.addAttribute("userLocal",user);
+            model.addAttribute("userName",userName);
             return "userHome";
         }
 

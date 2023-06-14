@@ -1,23 +1,14 @@
 package com.fisher.practice.mvc.handle;
 
-import com.alibaba.druid.pool.DruidDataSource;
-import com.beust.ah.A;
-import com.fisher.practice.mvc.entry.User;
 import com.fisher.practice.service.UserService;
 import lombok.extern.slf4j.Slf4j;
-import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.context.annotation.ApplicationScope;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 /**
@@ -29,8 +20,8 @@ import javax.servlet.http.HttpSession;
  */
 @Slf4j
 @Controller
+@RequestMapping("/demo01")
 public class Demo01HelloHandle {
-
 
     private final UserService userServiceImpl;
 
@@ -49,7 +40,7 @@ public class Demo01HelloHandle {
     }
 
     @RequestMapping(
-            value = {"say/hello/to/spring/mvc"})
+            value = {"/say/hello/to/spring/mvc"})
     public String sayHello(HttpServletRequest request){
         log.debug("hello world.");
         HttpSession session = request.getSession();
@@ -57,7 +48,7 @@ public class Demo01HelloHandle {
         return "target";
     }
 
-    @RequestMapping(value = "user/login")
+    @RequestMapping(value = "/user/login")
     public String login(){
 
         return "login";
@@ -68,7 +59,7 @@ public class Demo01HelloHandle {
         return "sign";
     }
 
-    @RequestMapping(value = "user/sign/success",method = RequestMethod.POST)
+    @RequestMapping(value = "/user/sign/success",method = RequestMethod.POST)
     public String signSuccess(
             @RequestParam("userName") String userName,
             @RequestParam("email") String email,
@@ -86,7 +77,7 @@ public class Demo01HelloHandle {
         return "userAlreadyExists";
     }
 
-    @RequestMapping(value = "user/home",method = RequestMethod.POST)
+    @RequestMapping(value = "/user/home",method = RequestMethod.POST)
     public String home(
             @RequestParam("userName") String userName,
             @RequestParam("email") String email,

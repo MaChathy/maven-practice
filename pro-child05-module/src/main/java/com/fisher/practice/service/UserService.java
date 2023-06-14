@@ -19,7 +19,9 @@ public interface UserService {
 
     /**
      * 查找单个用户
-     * @param email 用戶名
+     * @param email 用戶邮箱
+     * @param userPwd 用户密码
+     * @param userName 用户名
      * @return 1
      */
     int selectOneUser(String email,String userPwd,String userName);

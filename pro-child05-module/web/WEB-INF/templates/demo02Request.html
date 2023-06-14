@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>demo02RequestHandle</title>
+</head>
+<body>
+    <div>
+          <form th:action="@{/demo02/param/form}" method="post">
+	          <label>学生名：<input type="text" name="userName" value="tom"/></label><br>
+	          <label>学校名：<input type="text" name="school.schoolName" value="TiShingHao"></label><br>
+	          <label>学科01名：<input type="text" value="java" name="subjectList[0].subjectName"></label><br>
+	          <label>学科02名：<input type="text" value="C++" name="subjectList[1].subjectName"></label><br>
+	          <label>学科03名：<input type="text" value="python" name="subjectList[2].subjectName"></label><br>
+	          <label>学科04名：<input type="text" value="Kotlin" name="subjectList[3].subjectName"></label><br>
+	          <label>学科05名：<input type="text" value="C#" name="subjectList[4].subjectName"></label><br>
+	          <input type="submit" value="保存">
+          </form>
+    </div>
+</body>
+</html>

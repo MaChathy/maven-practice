@@ -1,5 +1,6 @@
 package com.fisher.practice.mvc.handle;
 
+import com.fisher.practice.mvc.entry.user.User;
 import com.fisher.practice.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -80,11 +81,15 @@ public class Demo01HelloHandle {
     public String home(
             @RequestParam("userName") String userName,
             @RequestParam("email") String email,
-            @RequestParam("userPwd") String password){
+            @RequestParam("userPwd") String password,
+            HttpSession session ){
 
         log.debug("【用户登陆信息】userName:"+userName+",email:"+email+",password:"+password);
         if ((userServiceImpl.selectOneUser(email,password,userName) != -1 )) {
             log.debug("登陆成功");
+            User user = new User(userName,email,password);
+            session.setAttribute("userLocal",user);
+            session.setAttribute("userName",userName);
             return "userHome";
         }
 

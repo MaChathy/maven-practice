@@ -57,9 +57,9 @@ public class MovieDaoImpl implements MovieDao {
 
     @Override
     public void updateMovie(Movies movies) {
-        String sql = "UPDATE fisher.t_movies SET movie_price = ? WHERE movie_id = ?";
+        String sql = "UPDATE fisher.t_movies SET movie_price = ?, movie_name = ? WHERE movie_id = ?";
         try{
-            jdbcTemplate.update(sql, movies.getMoviePrice(), movies.getMovieId());
+            jdbcTemplate.update(sql, movies.getMoviePrice(),movies.getMovieName(), movies.getMovieId());
         }catch (Exception e){
             log.debug("[MovieDaoImpl] updateMovie Error");
         }
@@ -67,9 +67,9 @@ public class MovieDaoImpl implements MovieDao {
 
     @Override
     public void removeMovie(Movies movies) {
-        String sql = "DELETE FROM fisher.t_movies WHERE movie_id = ? AND movie_name = ?";
+        String sql = "DELETE FROM fisher.t_movies WHERE movie_id = ?";
         try{
-            jdbcTemplate.update(sql, movies.getMovieId(), movies.getMovieName());
+            jdbcTemplate.update(sql, movies.getMovieId());
         }catch (Exception e){
             log.debug("[MovieDaoImpl] removeMovie Error");
         }

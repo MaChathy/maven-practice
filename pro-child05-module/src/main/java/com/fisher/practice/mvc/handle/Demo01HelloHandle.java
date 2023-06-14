@@ -73,7 +73,6 @@ public class Demo01HelloHandle {
             }
             return "signSuccess";
         }
-
         return "userAlreadyExists";
     }
 
@@ -88,6 +87,7 @@ public class Demo01HelloHandle {
             log.debug("登陆成功");
             return "userHome";
         }
+
         return "noSuchUser";
     }
 

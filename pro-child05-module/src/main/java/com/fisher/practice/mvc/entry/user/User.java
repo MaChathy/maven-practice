@@ -1,4 +1,4 @@
-package com.fisher.practice.mvc.entry;
+package com.fisher.practice.mvc.entry.user;
 
 import lombok.Data;
 

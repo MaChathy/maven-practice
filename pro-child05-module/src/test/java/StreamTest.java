@@ -1,4 +1,4 @@
-import com.fisher.practice.mvc.entry.User;
+import com.fisher.practice.mvc.entry.user.User;
 import org.junit.Test;
 
 /**

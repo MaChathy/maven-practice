@@ -3,17 +3,27 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
          version="4.0">
+    <!--配置Spring-mvc的负责请求处理的核心servlet,即Spring-mvc的前端控制器-->
     <servlet>
         <servlet-name>DispatcherServlet</servlet-name>
+        <!--dispatcherServlet的全类名-->
         <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+        <!--通过初始化参数指定MVC配置文件-->
         <init-param>
             <param-name>contextConfigLocation</param-name>
             <param-value>classpath:spring-mvc.xml</param-value>
         </init-param>
+        <!-- 作为框架的核心组件，在启动过程中有大量的初始化操作要做，
+        这些操作放在第一次请求时才执行非常不恰当 -->
+        <!-- 应将DispatcherServlet设置为随Web应用一起启动 -->
         <load-on-startup>1</load-on-startup>
     </servlet>
     <servlet-mapping>
         <servlet-name>DispatcherServlet</servlet-name>
+        <!-- 对DispatcherServlet来说，url-pattern有两种方式配置 -->
+        <!-- 方式一：配置“/”，表示匹配整个Web应用范围内所有请求。
+             硬性规定：不能写成“/*”。只有这一个地方有这个特殊要求，以后再配置Filter还是可以正常写“/*”。 -->
+        <!-- 方式二：配置“*.扩展名”，表示匹配整个Web应用范围内部分请求 -->
         <url-pattern>/</url-pattern>
     </servlet-mapping>
 </web-app>

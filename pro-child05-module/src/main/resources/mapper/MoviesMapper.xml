@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<mapper xmlns="http://mybatis.org/schema/mybatis-mapper">
+    <select id="selectAllMovies" resultType="com.fisher.practice.mvc.entry.mov.Movies">
+        select * from t_movies;
+    </select>
+    <select id="selectMovieById" resultType="com.fisher.practice.mvc.entry.mov.Movies">
+        select * from t_movies where movie_id = ?;
+    </select>
+
+</mapper>

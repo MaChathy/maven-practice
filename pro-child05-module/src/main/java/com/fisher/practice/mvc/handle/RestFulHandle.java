@@ -28,4 +28,15 @@ public class RestFulHandle {
         return "REST-target";
     }
 
+    @RequestMapping(value = "/emp/delete",method = RequestMethod.DELETE)
+    public String transformToDelete(
+            @RequestParam(value = "_method") String method,
+            Model model){
+
+        model.addAttribute("method", method);
+        log.debug("执行 transformToDelete()方法");
+
+        return "REST-target";
+    }
+
 }

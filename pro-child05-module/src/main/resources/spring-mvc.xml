@@ -20,7 +20,7 @@
     <!--配置view-controller-->
     <mvc:view-controller path="/update/emp" view-name="RESTful-put"/>
     <mvc:view-controller path="/delete/emp" view-name="RESTful-delete"/>
-<!--    <mvc:view-controller path="/index.html" view-name="RESTful-put"/>-->
+    <mvc:view-controller path="/get/pathValue" view-name="REST-pathvalue"/>
     <!--
     <mvc:view-controller path="/" view-name="moviePortal"/>
     <mvc:view-controller path="/index.html" view-name="moviePortal"/>

@@ -3,9 +3,12 @@ package com.fisher.practice.mvc.handle;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import java.sql.Ref;
 
 /**
  * REST-ful 四种请求方式映射
@@ -35,6 +38,19 @@ public class RestFulHandle {
 
         model.addAttribute("method", method);
         log.debug("执行 transformToDelete()方法");
+
+        return "REST-target";
+    }
+
+    @RequestMapping(value = "/emp/{empId}/{empName}",method = RequestMethod.GET)
+    public String getPathValue(
+            @PathVariable("empId") String empId,
+            @PathVariable("empName") String empName,
+            Model model){
+
+        model.addAttribute("empId",empId);
+        model.addAttribute("empName",empName);
+        log.debug("empId: " +empId+", empName: " +empName);
 
         return "REST-target";
     }

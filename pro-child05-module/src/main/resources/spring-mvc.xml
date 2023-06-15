@@ -18,14 +18,14 @@
     <mvc:annotation-driven/>
 
     <!--配置view-controller-->
+    <!--
     <mvc:view-controller path="/update/emp" view-name="RESTful-put"/>
     <mvc:view-controller path="/delete/emp" view-name="RESTful-delete"/>
     <mvc:view-controller path="/get/pathValue" view-name="REST-pathvalue"/>
-    <!--
-    <mvc:view-controller path="/" view-name="moviePortal"/>
-    <mvc:view-controller path="/index.html" view-name="moviePortal"/>
-    <mvc:view-controller path="/add/movie/page" view-name="movie-add"/>
     -->
+    <mvc:view-controller path="/" view-name="movie-rest-Portal"/>
+    <mvc:view-controller path="/index.html" view-name="movie-rest-Portal"/>
+    <mvc:view-controller path="/movie/add/page" view-name="movie-rest-add"/>
 
     <!-- 加入这个配置，SpringMVC 就会在遇到没有 @RequestMapping 的请求时放它过去 -->
     <!-- 所谓放它过去就是让这个请求去找它原本要访问的资源 -->
@@ -41,7 +41,7 @@
                     <bean class="org.thymeleaf.spring5.templateresolver.SpringResourceTemplateResolver">
 
                         <!--视图前缀-->
-                        <property name="prefix" value="/WEB-INF/templates/REST/"/>
+                        <property name="prefix" value="/WEB-INF/templates/movie-rest/"/>
 
                         <!--视图后缀-->
                         <property name="suffix" value=".html"/>

@@ -15,3 +15,7 @@
 /pro-child04-module/target/classes/
 /pro-child05-module/target/test-classes/
 /pro-child05-module/target/classes/
+
+/node_modules/
+
+/./

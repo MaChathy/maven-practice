@@ -18,11 +18,13 @@
     <mvc:annotation-driven/>
 
     <!--配置view-controller-->
-    <!--
+<!--    <mvc:view-controller path="/ajax" view-name="experiment01"/>-->
+<!--    <mvc:view-controller path="/index.html" view-name="experiment01"/>-->
+<!--
     <mvc:view-controller path="/update/emp" view-name="RESTful-put"/>
     <mvc:view-controller path="/delete/emp" view-name="RESTful-delete"/>
     <mvc:view-controller path="/get/pathValue" view-name="REST-pathvalue"/>
-    -->
+-->
     <mvc:view-controller path="/" view-name="movie-rest-Portal"/>
     <mvc:view-controller path="/index.html" view-name="movie-rest-Portal"/>
     <mvc:view-controller path="/movie/add/page" view-name="movie-rest-add"/>

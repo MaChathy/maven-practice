@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>Experiment01</title>
+</head>
+<body>
+<h1>Ajax Experiment01</h1>
+	<button id="btnSpan">点击</button>
+<script src="https://unpkg.com/vue@3/dist/vue.global.js" charset="UTF-8"></script>
+<script src="../script/axios.min.js" charset="UTF-8"></script>
+<script>
+    Vue.createApp({
+        "el":"#btnSpan",
+        "methods":{
+            "experimentOne":function () {
+
+                // 请求：发送普通请求参数
+                // 响应：普通文本
+                axios({
+                    "method":"post",
+                    "url":"/ajax/experiment/One",
+                    "params":{
+                        "userName":"tom",
+                        "password":"123456"
+                    }
+                }).then(
+                    function (response) {
+
+                    // response接收服务器端返回的响应数据
+                    console.log(response);
+                }).catch(function (response) {
+                    console.log(response);
+                });
+
+            }
+        }
+    });
+</script>
+</body>
+</html>

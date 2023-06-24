@@ -28,3 +28,22 @@ this module is about some simple practice of spring .
    - X-Requested-With 请求消息头：包含 XMLHttpRequest
 
 两个条件满足一个即可。
+
+###### **拦截器**
+在程序中，使用拦截器在请求到达具体 handler 方法前，统一执行检测。
+
+![img_1.png](img_1.png)
+
+拦截器与过滤器的不同点
+- 工作平台不同
+   - 过滤器工作在 Servlet 容器中
+   - 拦截器工作在 SpringMVC 的基础上
+- 拦截的范围
+   - 过滤器：能够拦截到的最大范围是整个 Web 应用
+   - 拦截器：能够拦截到的最大范围是整个 SpringMVC 负责的请求
+- IOC 容器支持
+   - 过滤器：想得到 IOC 容器需要调用专门的工具方法，是间接的
+   - 拦截器：它自己就在 IOC 容器中，所以可以直接从 IOC 容器中装配组件，也就是可以直接得到 IOC 容器的支持
+     
+**功能需要如果用 SpringMVC 的拦截器能够实现，就不使用过滤器。**
+

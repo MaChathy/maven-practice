@@ -65,4 +65,24 @@
     <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
         <property name="dataSource" ref="druidDataSource"/>
     </bean>
+
+    <!--异常映射-->
+    <bean id="exceptionResolver"
+          class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
+        <!--配置异常映射关系-->
+        <property name="exceptionMappings">
+            <props>
+                <!--key属性：指定异常类型-->
+                <!--文本标签：和异常类型对应的逻辑视图-->
+                <prop key="java.lang.ArithmeticException">error-arith</prop>
+                <prop key="java.lang.RuntimeException">error-runtime</prop>
+                <prop key="java.lang.NullPointerException">error-nullPointer</prop>
+                <prop key="java.lang.Exception">error-exception</prop>
+            </props>
+        </property>
+        <!--使用exceptionAttribute属性配置将异常对象存入请求域时的属性名-->
+        <!--属性名默认是exception-->
+        <property name="exceptionAttribute" value="fisherException"/>
+    </bean>
+
 </beans>

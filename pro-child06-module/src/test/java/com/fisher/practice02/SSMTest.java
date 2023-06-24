@@ -4,6 +4,7 @@ import com.alibaba.druid.pool.DruidDataSource;
 import com.alibaba.druid.pool.DruidPooledConnection;
 import com.fisher.practice02.ssm.entry.Soldier;
 import com.fisher.practice02.ssm.mapper.SoldierMapper;
+import com.fisher.practice02.ssm.service.api.SoldierService;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -24,27 +25,15 @@ import java.util.List;
 public class SSMTest {
 
     @Autowired
-    private DruidDataSource druidDataSource;
-
-    @Autowired
-    private SoldierMapper soldierMapper;
+    private SoldierService soldierService;
 
     @Test
-    public void testSSMStart() throws Exception {
-
-        DruidPooledConnection connection = druidDataSource.getConnection();
-        log.debug("connection:"+connection.toString());
-
-    }
-
-    @Test
-    public void testMybatis(){
-
-        List<Soldier> soldiers = soldierMapper.selectAll();
-
-        for (Soldier soldier : soldiers){
+    public void testTransactional(){
+        List<Soldier> allSoldiers = soldierService.getAllSoldiers();
+        for (Soldier soldier : allSoldiers){
             log.debug(soldier.toString());
         }
+
     }
 
 }

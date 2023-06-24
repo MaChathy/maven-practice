@@ -50,7 +50,7 @@
                     <bean class="org.thymeleaf.spring5.templateresolver.SpringResourceTemplateResolver">
 
                         <!--视图前缀-->
-                        <property name="prefix" value="/WEB-INF/templates/filter/"/>
+                        <property name="prefix" value="/WEB-INF/templates/interceptor/"/>
 
                         <!--视图后缀-->
                         <property name="suffix" value=".html"/>

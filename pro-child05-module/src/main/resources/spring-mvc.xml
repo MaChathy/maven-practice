@@ -14,23 +14,31 @@
 
     <context:property-placeholder location="classpath:jdbc.properties"/>
 
+    <!--注册拦截器类-->
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/private/resources/*"/>
+            <bean class="com.fisher.practice.mvc.interceptor.LoginInterceptor"/>
+        </mvc:interceptor>
+    </mvc:interceptors>
     <!--开启SpringMVC注解驱动-->
     <mvc:annotation-driven/>
 
     <!--配置view-controller-->
-    <mvc:view-controller path="/ajax" view-name="experiment01"/>
-    <mvc:view-controller path="/index.html" view-name="experiment01"/>
-<!--
-    <mvc:view-controller path="/update/emp" view-name="RESTful-put"/>
-    <mvc:view-controller path="/delete/emp" view-name="RESTful-delete"/>
-    <mvc:view-controller path="/get/pathValue" view-name="REST-pathvalue"/>
-    <mvc:view-controller path="/" view-name="movie-rest-Portal"/>
-    <mvc:view-controller path="/index.html" view-name="movie-rest-Portal"/>
-    <mvc:view-controller path="/movie/add/page" view-name="movie-rest-add"/>
--->
+    <!--
+        <mvc:view-controller path="/ajax" view-name="experiment01"/>
+        <mvc:view-controller path="/index.html" view-name="experiment01"/>
+
+        <mvc:view-controller path="/update/emp" view-name="RESTful-put"/>
+        <mvc:view-controller path="/delete/emp" view-name="RESTful-delete"/>
+        <mvc:view-controller path="/get/pathValue" view-name="REST-pathvalue"/>
+        <mvc:view-controller path="/" view-name="movie-rest-Portal"/>
+        <mvc:view-controller path="/index.html" view-name="movie-rest-Portal"/>
+        <mvc:view-controller path="/movie/add/page" view-name="movie-rest-add"/>
+    -->
     <!-- 加入这个配置，SpringMVC 就会在遇到没有 @RequestMapping 的请求时放它过去 -->
     <!-- 所谓放它过去就是让这个请求去找它原本要访问的资源 -->
-    <mvc:default-servlet-handler/>
+<!--    <mvc:default-servlet-handler/>-->
 
     <!--装配thymeleaf视图解析器-->
     <bean id="viewResolver" class="org.thymeleaf.spring5.view.ThymeleafViewResolver">
@@ -42,7 +50,7 @@
                     <bean class="org.thymeleaf.spring5.templateresolver.SpringResourceTemplateResolver">
 
                         <!--视图前缀-->
-                        <property name="prefix" value="/ajax/"/>
+                        <property name="prefix" value="/WEB-INF/templates/filter/"/>
 
                         <!--视图后缀-->
                         <property name="suffix" value=".html"/>

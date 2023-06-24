@@ -14,6 +14,7 @@
         <module>pro-child03-module</module>
         <module>pro-child04-module</module>
         <module>pro-child05-module</module>
+        <module>pro-child06-module</module>
     </modules>
     <properties>
         <maven.compiler.source>8</maven.compiler.source>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>target</title>
+	<style type="text/css" rel="stylesheet">
+		table {
+            border-collapse: collapse;
+			border: 1px blue dotted;
+			text-align: center
+		}
+		td {
+			border: 1px blue dotted;
+		}
+	</style>
+</head>
+<body>
+	<h1 th:text="${nickName}+'图片文件上传成功'"></h1>
+	<div>
+		<table>
+			<tbody>
+				<tr>
+					<td>上传表单项名</td>
+					<td th:text="${picName}"></td>
+				</tr>
+				<tr>
+					<td>图片原始文件名</td>
+					<td th:text="${originalName}"></td>
+				</tr>
+				<tr>
+					<td>图片内容类型</td>
+					<td th:text="${contentType}"></td>
+				</tr>
+				<tr>
+					<td>图片是否为空</td>
+					<td th:text="${empty}"></td>
+				</tr>
+				<tr>
+					<td>文件大小</td>
+					<td th:text="${size}"></td>
+				</tr>
+				<tr>
+					<td>文件二进制数据的字节数组</td>
+					<td th:text="${pictureBytes}"></td>
+				</tr>
+				<tr>
+					<td>读取文件输入的输入流对象</td>
+					<td th:text="${inputStream}"></td>
+				</tr>
+				<tr>
+					<td>当前MultipartFile对象的资源对象</td>
+					<td th:text="${resource}"></td>
+				</tr>
+				<tr>
+					<td colspan="2" >*************************************</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</body>
+</html>

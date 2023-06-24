@@ -1,8 +1,9 @@
-package com.fisher.practice.service;
+package com.fisher.practice.service.impl;
 
 import com.alibaba.druid.pool.DruidDataSource;
 import com.fisher.practice.dao.UserDao;
 import com.fisher.practice.dao.impl.UserDaoImpl;
+import com.fisher.practice.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;

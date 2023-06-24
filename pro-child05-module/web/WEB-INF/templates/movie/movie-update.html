@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>updateMovie</title>
+    <style type="text/css">
+        div{
+            margin-top: 10%;
+            margin-left: 30%;
+            border: 1px dotted darkslateblue;
+            background: #d7eea8;
+            width: 40%;
+            height: 50%;
+            text-align: center;
+        }
+        form{
+            text-align: center;
+            height: 100%;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+      <div>
+      <h1>修改电影信息</h1>
+      <form th:action="@{/saveUpdate/movie}" method="post">
+          <input type="hidden" name="movieID" th:value="${movieById.movieId}">
+          <label>电影ID:<input type="text" name="movieId" th:value="${movieById.movieId}" disabled/></label><br><br>
+          <label>电影名称：<input type="text" name="movieName" th:value="${movieById.movieName}"/></label><br><br>
+          <label>电影价格<input type="text" name="moviePrice" th:value="${movieById.moviePrice}"/></label><br><br>
+          <label><input type="submit" value="保存"></label>
+      </form>
+      </div>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>RESTful-delete</title>
+	<script type="text/javascript">
+		function convertMethod(anchorElement,event){
+            let targetURL = anchorElement.href;
+            let formEle = document.getElementById("convertForm");
+            formEle.action = targetURL;
+            formEle.submit();
+            event.preventDefault();
+        }
+	</script>
+	<style type="text/css" rel="stylesheet">
+		table{
+            border-collapse: collapse;
+		}
+		table tr,td{
+			border: 1px solid black;
+			text-align: center;
+		}
+	</style>
+</head>
+<body>
+    <form id="convertForm" method="post">
+        <input type="hidden" name="_method" value="delete">
+    </form>
+	<table>
+		<tr>
+			<td>姓名</td>
+			<td>年龄</td>
+			<td>删除</td>
+		</tr>
+		<tr>
+			<td>张三</td>
+			<td>40</td>
+			<td>
+				<a th:href="@{/emp/delete}" onclick="convertMethod(this,event)">删除</a>
+			</td>
+		</tr>
+		<tr>
+			<td>李四</td>
+			<td>30</td>
+			<td>
+				<a th:href="@{/emp/delete}" onclick="convertMethod(this,event)">删除</a>
+			</td>
+		</tr>
+	</table>
+</body>
+</html>

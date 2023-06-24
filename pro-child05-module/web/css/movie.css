@@ -1,0 +1,22 @@
+.out{
+    font-family: 微软雅黑, serif;
+    font-size: 20px;
+    background : #eec490;
+}
+#movie_list{
+    margin-left: 20%;
+    width: 60%;
+    height: 80%;
+    background-color: #a5c4fa;
+}
+
+#movie_table{
+    border-collapse: collapse;
+    border:1px solid burlywood;
+    text-align: center;
+}
+
+#movie_table td,tr {
+    text-align: center;
+    border: 1px dotted #14281f;
+}

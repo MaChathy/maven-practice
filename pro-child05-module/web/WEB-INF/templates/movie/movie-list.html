@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>电影列表</title>
+	<link type="text/css" rel="stylesheet" href="../css/movie.css">
+</head>
+<body class="out">
+	<div id="movie_list">
+		<table id="movie_table">
+			<tr>
+				<td>ID</td>
+				<td>NAME</td>
+				<td>PRICE</td>
+				<td> DEL </td>
+				<td>UPDATE</td>
+			</tr>
+			<tbody th:if="${#lists.isEmpty(session.allMovies)}">
+				<tr>
+					<td colspan="5">没有电影信息</td>
+				</tr>
+			</tbody>
+			<tbody th:unless="${#lists.isEmpty(session.allMovies)}">
+				<tr th:each="movie : ${session.allMovies}">
+					<td th:text="${movie.movieId}">显示电影id</td>
+					<td th:text="${movie.movieName}">显示电影名</td>
+					<td th:text="${movie.moviePrice}">显示电影价格</td>
+					<td><a th:href="@{/remove/movie/(movieId=${movie.movieId})}">删除</a></td>
+					<td><a th:href="@{/update/movie/page/(movieId=${movie.movieId})}">更新</a></td>
+				</tr>
+				<tr>
+					<td colspan="5">
+						<a th:href="@{/add/movie/page}">添加</a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</body>
+</html>

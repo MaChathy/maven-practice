@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>RESTful-put</title>
+</head>
+<body>
+    <form th:action="@{/emp}" method="post">
+        <input type="hidden" name="_method" value="put" />
+        <button type="submit">提交</button>
+    </form>
+</body>
+</html>

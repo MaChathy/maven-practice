@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>电影列表</title>
+  <script type="text/javascript">
+    function convertMethod(anchorElement, event,formName) {
+    
+      // 获取超链接原本要访问的目标地址
+      let targetURL = anchorElement.href;
+  
+      // 获取表单对象
+      let formEle = document.getElementById(formName);
+  
+      // 把超链接原本要访问的地址设置给表单的 action 属性
+      formEle.action = targetURL;
+    
+      // 提交表单
+      formEle.submit();
+    
+      // 取消控件的默认行为：让超链接不会跳转
+      event.preventDefault();
+    }
+  </script>
+  <style type="text/css" rel="stylesheet">
+    .out{
+      font-family: 微软雅黑, serif;
+      font-size: 20px;
+      background : #eec490;
+    }
+    #movie_list{
+      margin-left: 20%;
+      width: 60%;
+      height: 80%;
+      background-color: #a5c4fa;
+    }
+  
+    #movie_table{
+      border-collapse: collapse;
+      border:1px solid burlywood;
+      text-align: center;
+    }
+  
+    #movie_table td,tr {
+      text-align: center;
+      border: 1px dotted #14281f;
+    }
+  </style>
+</head>
+<body class="out">
+<div id="movie_list">
+  <form id="convertForm" method="post">
+    <input type="hidden" name="_method" value="delete">
+  </form>
+  <table id="movie_table">
+    <tr>
+      <td>电影ID</td>
+      <td>电影名称</td>
+      <td>电影票价</td>
+      <td> 删除 </td>
+      <td>更新</td>
+    </tr>
+    <tbody th:if="${#lists.isEmpty(allMovies)}">
+    <tr>
+      <td colspan="5">没有电影信息</td>
+    </tr>
+    </tbody>
+    <tbody th:unless="${#lists.isEmpty(allMovies)}">
+    <tr th:each="movie : ${allMovies}">
+      <td th:text="${movie.movieId}">显示电影id</td>
+      <td th:text="${movie.movieName}">显示电影名</td>
+      <td th:text="${movie.moviePrice}">显示电影价格</td>
+      <td><a th:href="@{/movie/}+${movie.movieId}" onclick="convertMethod(this,event,'convertForm')">删除</a></td>
+      <td><a th:href="@{/movie/}+${movie.movieId}">更新</a></td>
+    </tr>
+    <tr>
+      <td colspan="5">
+        <a th:href="@{/movie/add/page}">添加</a>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+</body>
+</html>

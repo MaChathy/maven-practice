@@ -28,4 +28,20 @@ public class SoldierServiceImpl implements SoldierService {
     public List<Soldier> getAllSoldiers() {
         return soldierMapper.selectAll();
     }
+
+    @Override
+    public void addSoldier(Soldier soldier) {
+        soldierMapper.insertOneSoldier(soldier.getSoldierName(),soldier.getSoldierWeapon());
+    }
+
+    @Override
+    public void updateSoldier(Soldier soldier) {
+        soldierMapper.updateOneSoldier(soldier.getSoldierName(),soldier.getSoldierWeapon(), soldier.getSoldierId());
+    }
+
+    @Override
+    public void removeSoldier(Integer soldierId) {
+        soldierMapper.removeOneSoldier(soldierId);
+    }
+
 }

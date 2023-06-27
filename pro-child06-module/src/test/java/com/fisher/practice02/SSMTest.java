@@ -33,7 +33,7 @@ public class SSMTest {
         for (Soldier soldier : allSoldiers){
             log.debug(soldier.toString());
         }
-
     }
+
 
 }

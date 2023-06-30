@@ -29,9 +29,15 @@
         <td>pro-child04-module</td>
         <td>spring AOP</td>
     </tr>
-        <tr>
+    <tr>
         <td>mvn-prcatice01-main</td>
         <td>pro-child05-module</td>
         <td>spring-mvc</td>
     </tr>
+    <tr>
+        <td>mvn-practice02-main</td>
+        <td>pro-child06-module</td>
+        <td>ssm</td>
+    </tr>
+    
 </table>

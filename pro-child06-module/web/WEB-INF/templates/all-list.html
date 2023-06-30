@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>soldierList</title>
+</head>
+<body>
+	<div>
+		<a th:href="@{/add/soldier/page}">添加</a>
+		<table>
+			<tbody th:if="${#lists.isEmpty(allSoldiers)}">
+				<tr>
+					<td colspan="3">没有信息</td>
+				</tr>
+			</tbody>
+			<tbody th:unless="${#lists.isEmpty(allSoldiers)}">
+				<tr>
+					<td>SoldierId</td>
+					<td>SoldierName</td>
+					<td>SoldierWeapon</td>
+					<td colspan="2">operations</td>
+				</tr>
+				<tr th:each="soldier : ${allSoldiers}">
+					<td th:text="${soldier.soldierId}">001</td>
+					<td th:text="${soldier.soldierName}">艾森豪威尔</td>
+					<td th:text="${soldier.soldierWeapon}">汤姆逊</td>
+					<td><a th:href="@{/edit/page/}+${soldier.soldierId}">修改</a></td>
+					<td><a th:href="@{/delete/soldier/info/}+${soldier.soldierId}">删除</a></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</body>
+</html>

@@ -16,6 +16,13 @@
 /pro-child05-module/target/test-classes/
 /pro-child05-module/target/classes/
 
+/pro-child06-module/target/test-classes/
+/pro-child06-module/target/classes/
+
 /node_modules/
+
+/.idea/*
+
+/.idea/artifacts/*
 
 /./

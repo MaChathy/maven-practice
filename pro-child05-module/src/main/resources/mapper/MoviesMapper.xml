@@ -3,8 +3,10 @@
     <select id="selectAllMovies" resultType="com.fisher.practice.mvc.entry.mov.Movies">
         select * from t_movies;
     </select>
+
     <select id="selectMovieById" resultType="com.fisher.practice.mvc.entry.mov.Movies">
-        select * from t_movies where movie_id = ?;
+        select * from t_movies where movie_id = #{movie_id};
     </select>
+
 
 </mapper>

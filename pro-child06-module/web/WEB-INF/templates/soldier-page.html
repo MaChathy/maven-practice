@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+</head>
+<body>
+
+	<table>
+		<tr th:each="soldier : ${pageInfo.list}">
+			<td th:text="${soldier.soldierId}"></td>
+			<td th:text="${soldier.soldierName}"></td>
+			<td th:text="${soldier.soldierWeapon}"></td>
+		</tr>
+		<tr>
+			<td colspan="3">
+				<span th:each="targetNum : ${pageInfo.navigatepageNums}">
+					<!-- 不是当前页显示为超链接 -->
+					<a th:if="${targetNum != pageInfo.pageNum}" th:href="@{/get/page/}+${targetNum}"
+						th:text="'['+${targetNum}+']'"></a>
+
+					<span th:unless="${targetNum != pageInfo.pageNum}" th:text="'['+${targetNum}+']'"></span>
+				</span>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="3">
+				<span th:if="${pageInfo.hasPreviousPage}">
+					<a th:href="@{/get/page/1}">首页</a>
+					<a th:href="@{/get/page/}+${pageInfo.prePage}">上一页</a>
+				</span>
+
+				<span th:if="${pageInfo.hasNextPage}">
+					<a th:href="@{/get/page/}+${pageInfo.nextPage}">下一页</a>
+					<a th:href="@{/get/page/}+${pageInfo.pages}">末页</a>
+				</span>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="3">
+				<input id="jumpToPageNumInput" type="text" name="jumpToPageNum" placeholder="请输入您想跳转的页码"/>
+			</td>
+		</tr>
+	</table>
+	<script>
+		var jumpPageNumEle = document.getElementById("jumpToPageNumInput");
+
+		jumpPageNumEle.onchange = function (){
+
+		    var targetNum = this.value;
+
+		    if(isNaN(targetNum)){
+		        this.value = "";
+		        return ;
+		    }
+            window.location.href = "[[@{/get/page/}]]"+targetNum ;
+        };
+	</script>
+</body>
+</html>

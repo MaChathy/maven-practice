@@ -1,9 +1,6 @@
 package com.fisher.practice02;
 
-import com.alibaba.druid.pool.DruidDataSource;
-import com.alibaba.druid.pool.DruidPooledConnection;
 import com.fisher.practice02.ssm.entry.Soldier;
-import com.fisher.practice02.ssm.mapper.SoldierMapper;
 import com.fisher.practice02.ssm.service.api.SoldierService;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
@@ -21,7 +18,7 @@ import java.util.List;
  */
 @Slf4j
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(value = "classpath:spring-persist.xml")
+@ContextConfiguration(value = "classpath:application/spring-persist.xml")
 public class SSMTest {
 
     @Autowired

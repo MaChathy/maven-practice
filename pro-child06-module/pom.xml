@@ -11,14 +11,13 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>pro-child06-module</artifactId>
-
+    <packaging>war</packaging>
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
     </properties>
 
     <dependencies>
-        <!--注入spring依赖-->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-webmvc</artifactId>
@@ -61,6 +60,13 @@
             <artifactId>mybatis-spring</artifactId>
             <version>2.0.6</version>
         </dependency>
+        <!--mybatis分页依赖 https://mvnrepository.com/artifact/com.github.pagehelper/pagehelper -->
+        <dependency>
+            <groupId>com.github.pagehelper</groupId>
+            <artifactId>pagehelper</artifactId>
+            <version>5.3.1</version>
+        </dependency>
+
         <!--mysql驱动-->
         <dependency>
             <groupId>mysql</groupId>

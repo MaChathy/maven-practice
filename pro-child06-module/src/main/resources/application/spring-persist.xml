@@ -25,9 +25,23 @@
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 
         <property name="configLocation" value="classpath:mybatis-config.xml"/>
-        <property name="mapperLocations" value="classpath:mapper/*Mapper.xml"/>
+        <property name="mapperLocations" value="classpath:mapper/SoldierMapper.xml"/>
         <property name="dataSource" ref="druidDataSource"/>
 
+        <!--添加分页插件-->
+        <property name="plugins">
+            <array>
+                <bean class="com.github.pagehelper.PageInterceptor">
+                    <property name="properties">
+                        <!--使用下面的方式配置参数，一行配置一个 -->
+                        <value>
+                            reasonable=true
+                            helperDialect=mysql
+                        </value>
+                    </property>
+                </bean>
+            </array>
+        </property>
     </bean>
 
     <bean id="mapperScannerConfiguration" class="org.mybatis.spring.mapper.MapperScannerConfigurer">

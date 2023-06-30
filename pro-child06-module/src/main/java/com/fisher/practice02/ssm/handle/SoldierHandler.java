@@ -2,6 +2,8 @@ package com.fisher.practice02.ssm.handle;
 
 import com.fisher.practice02.ssm.entry.Soldier;
 import com.fisher.practice02.ssm.service.api.SoldierService;
+import com.github.pagehelper.PageInfo;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -11,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import java.util.List;
 
 /**
- * Soldier处理类
+ * Soldier处理类 -> SoldierService CRUD
  * @author fisher
  * @version 1.0.1 2023/6/25 - 17:34
  */
@@ -20,11 +22,22 @@ public class SoldierHandler {
 
     private final SoldierService soldierService;
 
-    public SoldierHandler(SoldierService soldierService) {
+    public SoldierHandler(@Qualifier("soldierServiceImpl") SoldierService soldierService) {
         this.soldierService = soldierService;
     }
 
     //show all soldier
+    @RequestMapping(value = "/get/page/{pageNo}")
+    public String getPage(
+            @PathVariable Integer pageNo,
+            Model model){
+        PageInfo<Soldier> pageInfo = soldierService.getPageInfo(pageNo);
+
+        model.addAttribute("pageInfo", pageInfo);
+
+        return "soldier-page";
+    }
+
     @RequestMapping(value = "/get/all")
     public String showAllInfo(Model model){
 
@@ -46,7 +59,7 @@ public class SoldierHandler {
         //Service 层 功能
         soldierService.addSoldier(soldier);
 
-        return "redirect:/all-list";
+        return "redirect:/get/all";
     }
 
     @RequestMapping(value = "/add/soldier/page")
@@ -59,7 +72,9 @@ public class SoldierHandler {
             @PathVariable Integer soldierId,
             Model model){
 
-        model.addAttribute("soldierId",soldierId);
+        Soldier soldierById = soldierService.getSoldierById(soldierId);
+
+        model.addAttribute("soldierById",soldierById);
 
         return "edit-soldier";
     }
@@ -75,7 +90,7 @@ public class SoldierHandler {
         //Service 层 功能
         soldierService.updateSoldier(soldier);
 
-        return "redirect:/all-list";
+        return "redirect:/get/all";
     }
 
     //delete a soldier info
@@ -86,7 +101,7 @@ public class SoldierHandler {
         //Service 层 功能
         soldierService.removeSoldier(soldierId);
 
-        return "redirect:/all-list";
+        return "redirect:/get/all";
     }
 
 }

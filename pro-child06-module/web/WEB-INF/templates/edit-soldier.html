@@ -6,10 +6,10 @@
 </head>
 <body>
 	<form th:action="@{/edit/soldier/info}" method="post">
-		<input type="hidden" name="soldierID" th:value="${soldierId}">
-		soldierId:<input type="text" name="soldierId" th:text="${soldierId}" disabled>
-		soldierName:<input type="text" name="soldierName"><br>
-		soldierWeapon:<input type="text" name="soldierWeapon"><br>
+		<input type="hidden" name="soldierID" th:value="${soldierById.soldierId}">
+		soldierId:<input type="text" name="soldierId" th:placeholder="${soldierById.soldierId}" disabled>
+		soldierName:<input type="text" name="soldierName" th:value="${soldierById.soldierName}"><br>
+		soldierWeapon:<input type="text" name="soldierWeapon" th:value="${soldierById.soldierWeapon}"><br>
 		<input type="submit" value="修改">
 	</form>
 </body>

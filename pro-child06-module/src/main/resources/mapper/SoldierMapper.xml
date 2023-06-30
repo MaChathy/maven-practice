@@ -7,17 +7,25 @@
     <select id="selectAll" resultType="com.fisher.practice02.ssm.entry.Soldier">
         SELECT soldier_id,soldier_name,soldier_weapon FROM t_soldier
     </select>
+    
+    <select id="selectSoldierById" resultType="com.fisher.practice02.ssm.entry.Soldier">
+        SELECT soldier_id,soldier_name,soldier_weapon from t_soldier where soldier_id = #{soldierId}
+    </select>
+    
+    <select id="getLastInsertedId" resultType="java.lang.Integer">
+        SELECT LAST_INSERT_ID();
+    </select>
 
-    <insert id="insertOneSoldier" useGeneratedKeys="true" keyProperty="soldier_id">
-        insert into t_soldier(soldier_name,soldier_weapon) values(#{soldierName},#{soldierWeapon});
+    <insert id="insertOneSoldier" useGeneratedKeys="true" keyProperty="soldierId">
+        insert into t_soldier(soldier_name, soldier_weapon) values (#{soldierName}, #{soldierWeapon});
     </insert>
 
     <update id="updateOneSoldier">
         update t_soldier set soldier_name = #{soldierName} ,soldier_weapon = #{soldierWeapon} where soldier_id = #{soldierId};
     </update>
 
-    <delete id="removeOneSoldier">
-        delete t_soldier where soldier_id = #{soldierId};
+    <delete id="deleteOneSoldier">
+        delete from t_soldier where soldier_id = #{soldierId};
     </delete>
 
 </mapper>
